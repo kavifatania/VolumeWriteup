@@ -1,0 +1,110 @@
+---
+title: |
+  Title: Tumour size and overall survival in glioblastoma: a prognostic modelling and simulation study
+author:
+  - Kavi Fatania:
+      institute: [DofRL, LIMR]
+  - Russell Frood:
+      institute: [DofRL, LIMR]
+  - Hitesh Mistry:
+      institute: [UofM]
+  - Susan C. Short:
+      institute: [DofCO]
+  - James O'Connor:
+      institute: [DofCS, DofRC, DofRI]
+  - Andrew F. Scarsbrook:
+      institute: [DofRL, LIMR]
+  - Stuart Currie:
+      institute: [DofRL, LIMR]
+institute:
+  - DofRL: Department of Radiology, Leeds Teaching Hospitals NHS Trust, UK
+  - LIMR: Leeds Institute of Medical Research, University of Leeds, Leeds, UK
+  - UofM: University of Manchester, Manchester, UK
+  - DofCO: Department of Clinical Oncology, Leeds Teaching Hospitals NHS Trust, UK
+  - DofCS: Division of Cancer Sciences, The University of Manchester, Manchester, UK
+  - DofRC: Department of Radiology, The Christie Hospital, Manchester, UK
+  - DofRI: Division of Radiotherapy and Imaging, Institute of Cancer Research, London, UK
+journal: ""
+date: ""
+toc: false
+output:
+ bookdown::word_document2:
+    fig_caption: yes
+    pandoc_args:
+    - --csl=Extras/clinical-mass-spectrometry.csl
+    - --citation-abbreviations=Extras/abbreviations.json
+    - --filter=pandoc-crossref
+    - --lua-filter=Extras/scholarly-metadata.lua
+    - --lua-filter=Extras/author-info-blocks.lua
+    - --reference-doc=/Users/Kavi/Radiology/PhD/Thesis/VolumeModelling/VolModWriteup/Extras/Reference_Document.docx
+ bookdown::pdf_document2:
+      pandoc_args:
+      - --csl=Extras/clinical-mass-spectrometry.csl
+      - --citation-abbreviations=Extras/abbreviations.json
+      - --filter=pandoc-crossref
+      - --lua-filter=Extras/scholarly-metadata.lua
+      - --lua-filter=Extras/author-info-blocks.lua
+bibliography: "/Users/Kavi/MendeleyBibtexFiles/PhD.bib"
+keywords: "CRAN, R, RMarkdown, RStudio, YAML"
+---
+
+<br>
+
+[Corresponding author]{.underline} 
+
+Dr Kavi Fatania
+
+Department of Radiology
+
+Leeds General Infirmary
+
+Great George Street
+
+LS1 3EX
+
+Kavi.fatania@nhs.net
+
+ORCID: https://orcid.org/0000-0003-2421-1083
+
+\pagebreak
+
+**[Abstract]{.underline}**
+
+[Background]{.underline}
+
+There are an array of prognostic models of glioblastoma incorporating tumour volume or diameter, developed with heterogeneous methodology and with variable results. Our aim was to investigate the relationship between overall survival (OS) and tumour size using an institutional dataset derived from patients with glioblastoma.
+
+[Methods]{.underline}
+
+Patients diagnosed with IDH-wildtype unifocal WHO grade 4 glioblastoma from 2014-2020, with pre-operative T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and post-gadolinium T1W (T1Gd) imaging were included. Tumours were semi-automatically segmented using deep-learning initially and then manually corrected. Maximum diameter was measured was also measured using in-house diagnostic image viewing software. Association between core or whole tumour volume (CTV or WTV respectively) or diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised spline functions were used to assess non-linearity. A resampling analysis  was performed using bootstrapping with varying sample sizes (50,100,150,200,250,279). The percentage of models with p-value <0.05 across repetitions was calculated per sample size.
+
+[Results]{.underline}
+
+279 patients were included. Median (interquartile range) CTV 28.1cm3 (12.6 – 50.3), WTV 103.3cm3 (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). Univariable models of volume or diameter ± log transformation showed no association with OS and spline functions did not show a non-linear trend. The resampling analysis led to higher percentages of significant models when CTV or WTV was log transformed, and with larger sample sizes. For n=50, 5.1% of WTV vs 5.2% log(WTV), 5.0% CTV vs 7.0% log(CTV) had p<0.05. At n=279, 5.6% WTV and 9.7% log(WTV), 8.6% CTV vs 8.9% log(CTV) had p<0.05. Only increasing sample size increased the percentage of models with p<0.05 for tumour diameter. 
+
+[Conclusion]{.underline}
+
+There was no evidence of association between volume or diameter and patient outcome in a single institutional dataset derived from patients with glioblastoma. A resampling analysis suggests that there could be a prognostic effect for tumour size, and for WTV more likely demonstrated after log transformation and using larger datasets.
+
+Abstract word count: 326
+
+\pagebreak
+
+**[Introduction]{.underline}**
+
+Glioblastoma (GBM) is the most common primary brain malignancy in adults and patients have a median overall survival (OS) of 12-15 months despite maximal oncological treatment (maximum safe surgical resection followed by adjuvant radiotherapy with concurrent temozolomide and further 6 cycles of adjuvant temozolomide -- Stupp protocol)[@Stupp2005;@Stupp2009].
+
+<br>
+
+There has been great interest in investigating which prognostic factors are important for patients with GBM, and many prognostic models commonly include imaging biomarkers[@Tewarie2021]. Magnetic resonance imaging (MRI) is routinely performed for patients with GBM throughout their treatment journey and therefore is a popular modality for exploring prognostic imaging biomarkers. The diameter of the tumour core is routinely evaluated in clinical practice and is amongst the most common of the imaging predictors of OS to be investigated[@Henker2017]. There are now several methods available for automated or semi-automated segmentation of the different habitats of GBM, and it has therefore become more feasible to integrate tumour volumes into prognostic models, including in larger institutional datasets[@Henker2017;@Rudie2019;@Forghani2020].
+
+<br>
+
+Prognostic modelling studies have been inconsistent regarding the prognostic effect of tumour diameter and volume[@Henker2017,@Peeken2018;@Lacroix2001;@Compter2021;@Senders2020]. Some of this inconsistency may be due to the sample sizes that are used to derive the prognostic models. Large cohort studies of GBM have demonstrated a weak prognostic effect of tumour diameter[@Senders2020], but smaller studies have often resulted in mixed  results[@Compter2021;@Soltani2021;@Park2017a]. Similar findings are observed for tumour volume[@Henker2017;@Li2016;@Molinaro2020]. As well as variation in sample size, some of the inconsistency may be due to variations in handling continuous variables during the modelling process, for example leading to dichotomisation[@Wangaryattawanich2015], assumptions of a linear relationship to outcome[@Henker2017] and use of univariable model significance to select predictors into multivariable models[@Park2017a]. All these choices are known to impact upon the modelling process and may impact on the ability to determine accurate prognostic effects of the candidate predictors[@Harrell2015;@Riley2019b].
+
+<br>
+
+In this study, therefore, our aim is to use an institutional cohort of patients diagnosed with GBM to investigate the prognostic effect of tumour volume and diameter, and how choice of sample size and consideration of non-linear transformations may impact on the likelihood
+of finding a prognostic effect using a resampling study.
+
+## References
