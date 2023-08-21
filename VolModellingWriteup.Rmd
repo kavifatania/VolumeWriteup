@@ -129,61 +129,31 @@ A summary of the data preparation is shown in **Figure \@ref(fig:flowchart)**. D
 ```{r flowchart, fig.cap="Flowchart summarising the preparation of imaging data for statistical analysis", echo=FALSE}
 knitr::include_graphics("figures/Fig1.tiff")
 ```
+
 FeTS = Federated Tumor Segmentation software, GBM = glioblastoma, IDHwt = isocitrate dehydrogenase wild-type, PACS = picture archive and communication system, T1Gd = gadolinium-enhanced T1-weighted imaging
 
 <br>
 
 *[Image pre-processing and tumour segmentation]{.underline}*
 
-Semi-automated tumour segmentations were produced using the Federated
-Tumor Segmentation (FeTS) software, which is freely available and
-provides a command line interface (CLI) and graphical user interface
-(GUI) for pre-processing and segmentation of MRIs for patients with
-glioblastoma\[20\]. An in-depth description of the specific packages and
-libraries used in FeTS is available in the accompanying manuscript and
-utilises the same pre-processing steps used in both the Multimodal Brain
-Tumor Image Segmentation Benchmark (BRATS) challenge\[21\], and the
-open-source Cancer Imaging Phenomics Toolkit (CaPTk)\[22\]. The main
-processes will be summarised below.
+Semi-automated tumour segmentations were produced using the Federated Tumor Segmentation (FeTS) software, an open-source platform with both command line interface (CLI) and graphical user interfaces (GUI), available for processing and segmentation of MRIs for patients with glioblastoma[@Pati2022]. Detailed description of the software, including packages and libraries used in FeTS is available elsewhere[@Pati2022] and utilises the same pre-processing steps used in the Multimodal Brain Tumor Image Segmentation Benchmark (BRATS) challenge[@Menze2015], and the
+open-source software Cancer Imaging Phenomics Toolkit (CaPTk)[@Davatzikos2018]. The key 
+features will be outlined.
 
-The T2W, T1Gd and FLAIR sequences were rigidly co-registered to the T1W
-sequence and then to the SRI24 brain atlas\[23\] and spatially resampled
-to the same 1 x 1 x 1mm voxel resolution using the Greedy registration
-framework\[24\]. Images are then skull-stripped using the BrainMaGe
-method\[25\]. Glioblastoma segmentation was produced using the 'nnU-net'
-deep-learning network using the pretrained model weights supplied by
-developers\[26\] and that was supplied within the FeTS package. Each
-patient's GBM was automatically segmented into three volumes of interest
-(VOIs), which were merged to form a 'whole' tumour volume (WTV) VOI. The
-three VOIs were defined as: i) necrotic tumour -- fluid signal intensity
-showing very high T2W signal and reduced T1Gd signal compare to the same
-area on T1W images; ii) enhancing tumour -- increased signal on T1Gd
-compared to the same area on T1W images and also increased T1Gd signal
-compared to normal white matter regions on T1Gd images; iii)
-peritumoural oedema -- high FLAIR and T2W signal of the entire tumour,
-minus the necrotic and enhancing regions and not including ventricles or
-extra-axial CSF spaces\[21\]. The resultant tissue segmentation masks
-were used to produce two tumour volumes per patient: 1) core tumour
-volume (CTV, cm^3^) -- the necrotic and enhancing component of the
-tissue segmentations were merged; 2) whole tumour volume (WTV, cm^3^) --
-CTV was merged with the peritumoural oedema mask (**Figure 2**).
+The T2W, T1Gd and FLAIR sequences were rigidly co-registered first to the T1W sequence, then to the SRI24 brain atlas[@Rohlfing2009] and also spatially resampled to 1 x 1 x 1mm voxel resolution using the Greedy registration framework[@Yushkevich2016]. Images were then skull-stripped[@Thakur2020] and tumour segmentation was performed with the 'nnU-net' deep-learning network and pretrained model weights[@Isensee2021]. Tumours were automatically segmented into three volumes of interest
+(VOIs). The three VOIs were defined as: i) necrotic tumour -- fluid signal intensity showing very high T2W signal and reduced T1Gd signal compared to the same area on T1W images; ii) enhancing tumour -- increased signal on T1Gd compared to the same area on T1W images and also increased T1Gd signal
+compared to normal white matter regions on T1Gd images; iii) peritumoural oedema -- high FLAIR and T2W signal of the entire tumour, minus the necrotic and enhancing regions and not including ventricles or extra-axial CSF spaces[@Menze2015]. Tumour masks were used to produce two tumour volumes per patient: 1) core tumour volume (CTV, cm^3^) -- combination of necrotic and enhancing components; 2) whole tumour volume (WTV, cm^3^) -- CTV combined with the peritumoural oedema (see **Figure \@ref(fig:gbms)**).
 
-The tissue segmentations were checked manually and corrected using the
-GUI tools provided with the FeTS software. All segmentations were
-checked by an imaging fellow (5 years radiology experience).
-Independently, 50 segmentations were also checked by a consultant
-neuroradiologist (\>10 years consultant neuroradiology experience) and
-the inter-rater concordance compared using the dice similarity
-coefficient (DSC). The mean (± standard deviation) DSC for core and
-oedema segmentations was 0.94 ± 0.05 and 0.97 ± 0.03 respectively, which
-are comparable to 'reference' values published in the BRATS dataset for
-glioblastoma, in which multiple 'experts' segment the same images and
-are therefore within the expected range of inter-rater agreement\[21\].
+```{r gbms, fig.cap="Definition of tumour volumes used in the study", echo=FALSE}
+knitr::include_graphics("figures/segmentation.tiff")
+```
 
-Tumour diameter measurement was defined as the maximum axial or
-craniocaudal diameter of the enhancing tumour core and was measured
-using the T1Gd sequence within imaging viewing software (Impax Version
-6.5.3.3009, Agfa Healthcare) using in-built callipers on a submillimetre
-scale (mm - converted to cm).
+<br>
+
+Selected MRI axial images: left – fluid-attenuated inversion recovery (FLAIR); middle – gadolinium-enhanced T1-weighted (T1Gd); right – T1Gd image with overlay of core tumour segmentation (in green) and peritumoural oedema (yellow). Core tumour volume (CTV) defined as the enhancing and necrotic component of the tumour (green), and whole tumour volume (WTV) defined as the combination of core and peritumour oedema segmentation (green + yellow).
+
+The tissue segmentations were checked manually and corrected using the FeTS GUI. All segmentations were checked by an imaging fellow (5 years radiology experience). Independently, 50 segmentations were also checked by a consultant neuroradiologist (\>10 years consultant neuroradiology experience) and the inter-rater concordance compared using the dice similarity coefficient (DSC). The mean (± standard deviation) DSC for core and oedema segmentations was 0.94 ± 0.05 and 0.97 ± 0.03 respectively, which are equivalent to values published in the BRATS segmentation dataset, in which multiple experts raters segment the same GBM images, and our segmentation concordance was therefore within the expected variation of inter-rater agreement[@Menze2015].
+
+Tumour diameter was defined as the maximum axial or craniocaudal diameter of the enhancing tumour core and was measured using the T1Gd sequence within imaging viewing software (Impax Version 6.5.3.3009, Agfa Healthcare) using in-built callipers on a submillimetre scale (mm - converted to cm).
 
 ## References
