@@ -156,4 +156,55 @@ The tissue segmentations were checked manually and corrected using the FeTS GUI.
 
 Tumour diameter was defined as the maximum axial or craniocaudal diameter of the enhancing tumour core and was measured using the T1Gd sequence within imaging viewing software (Impax Version 6.5.3.3009, Agfa Healthcare) using in-built callipers on a submillimetre scale (mm - converted to cm).
 
+<br>
+
+*[Statistical analysis]{.underline}*
+
+All statistical analysis was performed in `r R.version.string`. Association between CTV, WTV or tumour diameter with overall survival (OS) was investigated using univariable Cox regression
+modelling. Hazard ratios (HRs), concordance indices and p-values for each model were used to assess performance. Any non-linear relationships between OS and size (volume or diameter) was explored using both logarithmic transformation and penalised spline function, the latter implemented using the 'pspline' function within the 'survival' package[@Therneau2023]. Penalised spline functions were used to assess for any trends in the data that might not be seen with a linear fit, as penalised splines allow a smooth curve to be fit to data[@Perperoglou2019]. Overfitting to the data points is discouraged by the inclusion of a roughness penalty, and the implementation doesn't require any pre-specification of the number of internal boundaries or knots. Model fits were assessed by plotting each tumour size parameter against the log-hazard ratio.
+
+To assess the impact that log-transformation and sample size could have on potentially detecting a prognostic effect of tumour size on OS, we conducted a resampling study. Using different sample sizes (50, 100, 150, 200, 250, 279), bootstrapped samples were generated from the original dataset with replacement. A Cox regression model for each tumour size variable, both with and without log-transformation, was created and the model's p-value extracted. Bootstrapping was carried out for 1,000,000 repetitions at each sample size and for each of the tumour size variables. The percentage of models that had a p-value \<0.05, \<0.01 and \<0.001 was calculated across the 1,000,000 repetitions per sample size.
+
+<br>
+
+**[Results]{.underline}**
+
+*[Demographics of the study population]{.underline}*
+
+After exclusion of ineligible patients, 279 patients with GBM were included, with 236 deaths before the censor date of 31/10/2020. Demographic information for the GBM patients is summarised in **Table \@ref(tab:demotable)**. Median OS was 12 months (95% CI 11 -- 14 months), median age was 62 years (IQR 55 -- 68 years), 39% (108/279) of patients were female, and 74% (207/279) patients had a surgical resection of their GBM. Median (IQR) CTV was 28.1cm^3^ (12.6 -- 50.3), WTV was 103.3cm^3^ (45.6 -- 160.1) and tumour diameter was 4.4cm (3.3-5.4). Histograms of tumour size (**Supplementary Figure 1**) show that distributions of CTV and WTV are slightly positively skewed and tumour diameter is normally distributed prior to any transformation.
+
+```{r, include=FALSE, cache=FALSE, echo=FALSE}
+knitr::read_chunk('/Users/Kavi/Radiology/PhD/MachineLearning/data/MLscripts/Demographics.R')
+```
+
+```{r, ImportDemo, include=FALSE}
+```
+
+```{r demotable, tab.cap='Summary of demographic and treatment information about patients (n=279)', echo=FALSE}
+# ft_demo
+```
+
+<br>
+
+*[Univariable Cox models of tumour size]{.underline}*
+
+**Table \@ref(tab:volmods)** summarises the univariable Cox regression models for CTV, WTV and diameter, both with and without log-transformation. The results of the models derived from the institutional GBM images show limited evidence for a prognostic relationship between tumour volume or diameter and OS. C-indices for all models were 0.5, and all hazard ratios (HRs) cross 1.
+
+```{r, include=FALSE, cache=FALSE}
+knitr::read_chunk('/Users/Kavi/Radiology/PhD/MachineLearning/data/MLscripts/VolMod.R')
+```
+
+```{r, ImportVolMod, include=FALSE, echo=FALSE}
+```
+
+```{r, VolModSummary, include=FALSE, echo=FALSE}
+```
+
+```{r volmods, echo=FALSE, tab.cap = 'Summary of univariable Cox regression models for tumour size parameters'}
+# ft_vol
+```
+
+<br>
+
+
 ## References
