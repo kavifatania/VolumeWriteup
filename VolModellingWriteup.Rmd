@@ -107,4 +107,19 @@ Prognostic modelling studies have been inconsistent regarding the prognostic eff
 In this study, therefore, our aim is to use an institutional cohort of patients diagnosed with GBM to investigate the prognostic effect of tumour volume and diameter, and how choice of sample size and consideration of non-linear transformations may impact on the likelihood
 of finding a prognostic effect using a resampling study.
 
+<br>
+
+**[Materials and methods]{.underline}**
+
+*[Patient selection]{.underline}*
+
+Neuro-oncology multidisciplinary team (MDT) records at our institution between 2014-2020 were retrospectively reviewed, and all patients (16 years and over) with histologically proven GBM were included. The catchment area includes 3.9 -- 4.4 million adults, and over this period,
+3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of
+the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were:
+absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented IDH mutation on immunohistochemistry or cytogenetic testing.
+
+<br>
+
+
+
 ## References
