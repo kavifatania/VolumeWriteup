@@ -1,6 +1,6 @@
 ---
 title: |
-  Title: Tumour size and overall survival in glioblastoma: a prognostic modelling and resampling study
+  Title: Tumour size and overall survival in unifocal glioblastoma: a prognostic modelling and resampling study
 author:
   - Kavi Fatania:
       institute: [DofRL, LIMR]
@@ -31,7 +31,7 @@ output:
  bookdown::word_document2:
     fig_caption: yes
     pandoc_args:
-    - --csl=Extras/clinical-mass-spectrometry.csl
+    - --csl=Extras/european-radiology.csl
     - --citation-abbreviations=Extras/abbreviations.json
     - --filter=pandoc-crossref
     - --lua-filter=Extras/scholarly-metadata.lua
@@ -72,21 +72,21 @@ ORCID: https://orcid.org/0000-0003-2421-1083
 
 [Background]{.underline}
 
-There are an array of prognostic models of glioblastoma incorporating tumour volume or diameter, developed with heterogeneous methodology and with variable results. Our aim was to investigate the relationship between overall survival (OS) and tumour size using an institutional dataset derived from patients with glioblastoma.
+An array of prognostic models of glioblastoma incorporating tumour volume or diameter exist - often with inconsistent results. Our aim was to investigate the relationship between overall survival (OS) and tumour size using an institutional dataset of patients with glioblastoma (GBM).
 
 [Methods]{.underline}
 
-Patients diagnosed with IDH-wildtype unifocal WHO grade 4 glioblastoma from 2014-2020, with pre-operative T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and post-gadolinium T1W (T1Gd) imaging were included. Tumours were semi-automatically segmented using deep-learning initially and then manually corrected. Maximum diameter was measured was also measured using in-house diagnostic image viewing software. Association between core or whole tumour volume (CTV or WTV respectively) or diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised spline functions were used to assess non-linearity. A resampling analysis  was performed using bootstrapping with varying sample sizes (50,100,150,200,250,279). The percentage of models with p-value <0.05 across repetitions was calculated per sample size.
+Retrospectively identified patients with IDH-wildtype unifocal WHO grade 4 GBM from 2014-2020 with pre-operative imaging were included. Tumours were segmented using deep-learning and manual correction and diameter was measured manually. Association between core or whole tumour volume (CTV or WTV respectively) or diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised splines were used to assess non-linearity. Resampling with 1,000,000 repetitions and varying sample size was used to create Cox models for tumour size - percentage of significant models was calculated per sample size.
 
 [Results]{.underline}
 
-279 patients were included. Median (interquartile range) CTV 28.1cm3 (12.6 – 50.3), WTV 103.3cm3 (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). Univariable models of volume or diameter ± log transformation showed no association with OS and spline functions did not show a non-linear trend. The resampling analysis led to higher percentages of significant models when CTV or WTV was log transformed, and with larger sample sizes. For n=50, 5.1% of WTV vs 5.2% log(WTV), 5.0% CTV vs 7.0% log(CTV) had p<0.05. At n=279, 5.6% WTV and 9.7% log(WTV), 8.6% CTV vs 8.9% log(CTV) had p<0.05. Only increasing sample size increased the percentage of models with p<0.05 for tumour diameter. 
+279 patients were included. Median (interquartile range) CTV 28.1cm^3^ (12.6 – 50.3), WTV 103.3cm^3^ (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). Univariable models of volume or diameter ± log transformation showed no association with OS and spline functions did not show a non-linear trend. Resampling led to higher percentages of significant models (p\<0.05) when CTV or WTV was log transformed, and with larger samples. For n=50, 5.1% of WTV vs 5.2% log(WTV), 5.0% CTV vs 7.0% log(CTV) were significant. At n=279, 5.6% WTV and 9.7% log(WTV), 8.6% CTV vs 8.9% log(CTV) had p\<0.05. Larger samples increased the percentage of significant models for diameter. 
 
 [Conclusion]{.underline}
 
-There was no evidence of association between volume or diameter and patient outcome in a single institutional dataset derived from patients with glioblastoma. A resampling analysis suggests that there could be a prognostic effect for tumour size, and for WTV more likely demonstrated after log transformation and using larger datasets.
+Association between tumour size and OS was not demonstrated in the institutional dataset. Resampling, however, suggests that there may be a prognostic effect for size using larger samples, and after log transformation for volume.
 
-Abstract word count: 319
+Word count: 270
 
 \pagebreak
 
@@ -241,7 +241,7 @@ GrpBxplot(wtv,log.wtv,Samp_sizes,"Whole tumour volume")
 GrpBxplot(core,log.core,Samp_sizes,"Core tumour volume")
 ```
 
-**Figure \@ref(fig:boxplotdiam) - \@ref(fig:boxplotcore)** -- *Each plot shows the distribution of p-values extracted from each model created across the 1,000,000 repetitions for each sample size. For each tumour size parameter, the p-value distributions for models before and after log-transformation are shown side by side (see figure legends). Dotted lines indicate the 0.05 significance level.* 
+*Each plot (Figure \@ref(fig:boxplotdiam) - \@ref(fig:boxplotcore)) shows the distribution of p-values extracted from each model created across the 1,000,000 repetitions for each sample size. For each tumour size parameter, the p-value distributions for models before and after log-transformation are shown side by side (see figure legend). Dotted lines indicate the 0.05 significance level.* 
 
 <br>
 
@@ -266,7 +266,7 @@ In univariable models derived from our institutional dataset of patients with GB
 
 <br>
 
-Word count: 
+Word count: 2,512
 
 <br>
 
