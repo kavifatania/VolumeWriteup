@@ -39,13 +39,13 @@ output:
     - --reference-doc=/Users/Kavi/Radiology/PhD/Thesis/VolumeModelling/VolModWriteup/Extras/Reference_Document.docx
  bookdown::pdf_document2:
       pandoc_args:
-      - --csl=Extras/clinical-mass-spectrometry.csl
+      - --csl=Extras/european-radiology.csl
       - --citation-abbreviations=Extras/abbreviations.json
       - --filter=pandoc-crossref
       - --lua-filter=Extras/scholarly-metadata.lua
       - --lua-filter=Extras/author-info-blocks.lua
 bibliography: "/Users/Kavi/MendeleyBibtexFiles/PhD.bib"
-keywords: "CRAN, R, RMarkdown, RStudio, YAML"
+keywords: 
 ---
 
 <br>
@@ -118,19 +118,14 @@ absence of pre-operative MRI, significant degradation of imaging due to artefact
 <br>
 
 *[Data preparation]{.underline}*
-```{r, include=F}
-library(captioner)
-figures <- captioner(prefix = "Figure ", auto_space = FALSE)
 
-figures("Fig1", "Flowchart summarising the preparation of imaging data for statistical analysis", display=FALSE)
-```
 A summary of the data preparation is shown in **Figure \@ref(fig:flowchart)**. Digital Imaging and Communications in Medicine (DICOM) image retrieval was approved by the local institutional approval (REC ref: 19/YH/0300, IRAS project ID: 255585). DICOM image preparation was performed in python 3[@VanRossum2009]. DICOM images were retrieved from the institutional picture archive and communication system (PACS) and pseudonymised, and the image acquisition parameters are summarised in **Supplementary Table 1**. Images were converted to Neuroimaging Informatics Technology Initiative (NIfTI) file format using the dicom2nifti (v2.3.4) package[@Icometrix].
 
-```{r flowchart, fig.cap="Flowchart summarising the preparation of imaging data for statistical analysis", echo=FALSE}
+```{r flowchart, fig.cap="Flowchart summarising the preparation of imaging data for statistical analysis", echo=FALSE,fig.topcaption=TRUE}
 knitr::include_graphics("figures/Fig1.tiff")
 ```
 
-FeTS = Federated Tumor Segmentation software, GBM = glioblastoma, IDHwt = isocitrate dehydrogenase wild-type, PACS = picture archive and communication system, T1Gd = gadolinium-enhanced T1-weighted imaging
+*FeTS = Federated Tumor Segmentation software, GBM = glioblastoma, IDHwt = isocitrate dehydrogenase wild-type, PACS = picture archive and communication system, T1Gd = gadolinium-enhanced T1-weighted imaging*
 
 <br>
 
@@ -144,11 +139,11 @@ The T2W, T1Gd and FLAIR sequences were rigidly co-registered first to the T1W se
 (VOIs). The three VOIs were defined as: i) necrotic tumour -- fluid signal intensity showing very high T2W signal and reduced T1Gd signal compared to the same area on T1W images; ii) enhancing tumour -- increased signal on T1Gd compared to the same area on T1W images and also increased T1Gd signal
 compared to normal white matter regions on T1Gd images; iii) peritumoural oedema -- high FLAIR and T2W signal of the entire tumour, minus the necrotic and enhancing regions and not including ventricles or extra-axial CSF spaces[@Menze2015]. Tumour masks were used to produce two tumour volumes per patient: 1) core tumour volume (CTV, cm^3^) -- combination of necrotic and enhancing components; 2) whole tumour volume (WTV, cm^3^) -- CTV combined with the peritumoural oedema (see **Figure \@ref(fig:gbms)**).
 
-```{r gbms, fig.cap="Definition of tumour volumes used in the study", echo=FALSE}
+```{r gbms, fig.cap="Definition of tumour volumes used in the study", echo=FALSE, fig.topcaption=TRUE}
 knitr::include_graphics("figures/segmentation.tiff")
 ```
 
-Selected MRI axial images: left – fluid-attenuated inversion recovery (FLAIR); middle – gadolinium-enhanced T1-weighted (T1Gd); right – T1Gd image with overlay of core tumour segmentation (in green) and peritumoural oedema (yellow). Core tumour volume (CTV) defined as the enhancing and necrotic component of the tumour (green), and whole tumour volume (WTV) defined as the combination of core and peritumour oedema segmentation (green + yellow).
+*Selected MRI axial images: left – fluid-attenuated inversion recovery (FLAIR); middle – gadolinium-enhanced T1-weighted (T1Gd); right – T1Gd image with overlay of core tumour segmentation (in green) and peritumoural oedema (yellow). Core tumour volume (CTV) defined as the enhancing and necrotic component of the tumour (green), and whole tumour volume (WTV) defined as the combination of core and peritumour oedema segmentation (green + yellow).*
 
 <br>
 
@@ -234,19 +229,19 @@ For n=50, 5.1% WTV vs 5.2% log(WTV) and 5.0% CTV vs 7.0% log(CTV) models were si
 ```{r, Boxplotfunction, include=FALSE, echo=FALSE}
 ```
 
-```{r boxplotdiam,fig.cap='Boxplots of p-values from resampling study for tumour diameter models',echo=FALSE, dpi=300,fig.height=7.5,fig.width=10,out.height=450,out.width=600}
+```{r boxplotdiam,fig.cap='Boxplots of p-values from resampling study for tumour diameter models',echo=FALSE, dpi=300,fig.height=7.5,fig.width=10,out.height=450,out.width=600,fig.topcaption=TRUE}
 GrpBxplot(diam,log.diam,Samp_sizes,"Tumour Diameter")
 ```
 
-```{r boxplotwtv,fig.cap='Boxplots of p-values from resampling study for whole tumour volume (WTV) models', echo=FALSE,dpi=300,fig.height=7.5,fig.width=10,out.height=450,out.width=600}
+```{r boxplotwtv,fig.cap='Boxplots of p-values from resampling study for whole tumour volume (WTV) models', echo=FALSE,dpi=300,fig.height=7.5,fig.width=10,out.height=450,out.width=600,fig.topcaption=TRUE}
 GrpBxplot(wtv,log.wtv,Samp_sizes,"Whole tumour volume")
 ```
 
-```{r boxplotcore,fig.cap='Boxplots of p-values from resampling study for core tumour volume (CTV) models', echo=FALSE,dpi=300,fig.height=7.5,fig.width=10,out.height=450,out.width=600}
+```{r boxplotcore,fig.cap='Boxplots of p-values from resampling study for core tumour volume (CTV) models', echo=FALSE,dpi=300,fig.height=7.5,fig.width=10,out.height=450,out.width=600,fig.topcaption=TRUE}
 GrpBxplot(core,log.core,Samp_sizes,"Core tumour volume")
 ```
 
-**Figure \@ref(fig:boxplotdiam) - \@ref(fig:boxplotcore)** -- Each plot shows the distribution of p-values extracted from each model created across the 1,000,000 repetitions for each sample size. For each tumour size parameter, the p-value distributions for models before and after log-transformation are shown side by side (see figure legends). Dotted lines indicate the 0.05 significance level. 
+**Figure \@ref(fig:boxplotdiam) - \@ref(fig:boxplotcore)** -- *Each plot shows the distribution of p-values extracted from each model created across the 1,000,000 repetitions for each sample size. For each tumour size parameter, the p-value distributions for models before and after log-transformation are shown side by side (see figure legends). Dotted lines indicate the 0.05 significance level.* 
 
 <br>
 
