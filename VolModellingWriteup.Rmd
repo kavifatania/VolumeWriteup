@@ -27,7 +27,7 @@ institute:
 journal: ""
 date: ""
 toc: false
-output: redoc::redoc
+output:
  bookdown::word_document2:
     fig_caption: yes
     pandoc_args:
@@ -104,7 +104,7 @@ of finding a prognostic effect using a resampling study.
 
 *[Ethical approval]{.underline}*
 
-Ethical approval and Digital Imaging and Communications in Medicine (DICOM) image retrieval was approved by the local institutional approval (REC ref: 19/YH/0300, IRAS project ID: 255585).
+Ethical approval and Digital Imaging and Communications in Medicine (DICOM) image retrieval was approved with local institutional approvals (REC ref: 19/YH/0300, IRAS project ID: 255585).
 
 <br>
 
@@ -158,7 +158,7 @@ Tumour diameter was defined as the maximum axial or craniocaudal diameter of the
 All statistical analysis was performed in `r R.version.string`. Association between CTV, WTV or tumour diameter with overall survival (OS) was investigated using univariable Cox regression
 modelling. Hazard ratios (HRs), concordance indices and p-values for each model were used to assess performance. Any non-linear relationships between OS and size (volume or diameter) was explored using both logarithmic transformation and penalised spline function, the latter implemented using the 'pspline' function within the 'survival' package[@Therneau2023]. Penalised spline functions were used to assess for any trends in the data that might not be seen with a linear fit, as penalised splines allow a smooth curve to be fit to data[@Perperoglou2019]. Overfitting to the data points is discouraged by the inclusion of a roughness penalty, and the implementation doesn't require any pre-specification of the number of internal boundaries or knots. Model fits were assessed by plotting each tumour size parameter against the log-hazard ratio.
 
-To assess the impact that log-transformation and sample size could have on potentially detecting a prognostic effect of tumour size on OS, we conducted a resampling study. Using different sample sizes (50, 100, 150, 200, 250, 279), bootstrapped samples were generated from the original dataset with replacement. A Cox regression model for each tumour size variable, both with and without log-transformation, was created and the model's p-value extracted. Bootstrapping was carried out for 1,000,000 repetitions at each sample size and for each of the tumour size variables. The percentage of models that had a p-value \<0.05, \<0.01 and \<0.001 was calculated across the 1,000,000 repetitions per sample size.
+To assess the impact that log-transformation and sample size could have on potentially detecting a prognostic effect of tumour size on OS, we conducted a resampling study. Using different sample sizes (50, 100, 150, 200, 250, 279), bootstrapped samples were generated from the original dataset with replacement. A Cox regression model for each tumour size variable, both with and without log-transformation, was created and the model's p-value extracted. Bootstrapping was carried out for 1,000,000 repetitions at each sample size and for each of the tumour size variables. The percentage of models that had a p-value \<0.05, \<0.01 and \<0.001 was calculated across the 1,000,000 repetitions per sample size. Any differences in the distribution of p-values between the sample sizes and between log-transformed and non-transformed models was assessed with two-sided Kolmogorov-Smirnov (KS) tests.
 
 <br>
 
@@ -223,9 +223,9 @@ ft_volsim
 
 <br>
 
-For n=50, 5.14% WTV vs 5.20% log(WTV) and 5.07% CTV vs 7.07% log(CTV) models had a p-value\<0.05. At n=279, 5.60% WTV vs 9.70% log(WTV) and 8.60% CTV vs 8.94% log(CTV) models had a p-value\<0.05. At n=50 5.43% diameter vs 5.95% log(diameter) models, and at n=279, 6.39% diameter vs 6.13% log(diameter) models had a p-value\<0.05. **Supplementary Tables 2a-b** also show the percentages of models with p\<0.01 and p\<0.001, and this shows the same overall trend for the tumour size parameters, but with successively lower percentages of models as the p-value threshold for statistical significance is lowered.
+For WTV, 5.14 vs 5.60% (n=50 vs n=279), for CTV 5.07 vs 8.60% and for diameter 5.43 vs 6.39% models had p-values\<0.05 across all repetitions. The distributions of p-values (across all repetitions per sample size at n=50 vs n=279) differed significantly on two-sided KS testing (all KS p-values<0.0001). Considering log-transformation, the increase in models with p-values\<0.05 for WTV versus log(WTV) at n=50 (5.14 WTV vs 5.20% log(WTV)) was not reflected in a significantly different distribution of p-values on KS testing (KS p=0.92). However, there were significant differences observed in the distribution of p-values before and after log-transformation for CTV at n=50 (5.07 vs 7.07%), and both CTV (8.60 vs 8.94%) and WTV (5.60 vs 9.70%) at n=279 (all KS p-values<0.0001). For diameter, log-transformation did not lead to consistently increased percentages of models with p-values\<0.05. At n=50, 5.43 vs 5.95% (diameter vs log(diameter)) and at n=279, 6.39 vs 6.13% (diameter vs log(diameter)) models across all repetitions had p-values\<0.05. **Supplementary Tables 2a-b** also show the percentages of models with p\<0.01 and p\<0.001, and this shows the same overall trend for the tumour size parameters, but with successively lower percentages of models as the p-value threshold is lowered.
 
-**Figure \@ref(fig:boxplotdiam) - \@ref(fig:boxplotcore)** show the distributions of the p-values extracted from models during the resampling study. For CTV and WTV, but not diameter, there is downwards trend as sample size increases, suggesting that the probability of seeing a prognostic effect is increased as sample size increases. Results from the resampling study indicate that the effect of decreasing the p-value distribution, and thereby increasing the probability of demonstrating a prognostic effect of size, by log-transformation is greater for WTV than CTV across the range of sample sizes.
+**Figure \@ref(fig:boxplotdiam) - \@ref(fig:boxplotcore)** show the distributions of the p-values extracted from models during the resampling study. For CTV and WTV, but not diameter, there is downwards trend as sample size increases, suggesting that the probability of seeing a prognostic effect is increased as sample size increases. Results from the resampling study indicate that the effect of decreasing the p-value distribution, and thereby increasing the probability of demonstrating a prognostic effect of size, by log-transformation is greater for WTV than CTV across the range of sample sizes. 
 
 
 ```{r, Boxplotfunction, include=FALSE, echo=FALSE}
@@ -249,7 +249,7 @@ GrpBxplot(core,log.core,Samp_sizes,"Core tumour volume")
 
 We aimed to investigate the prognostic effect of tumour volume and diameter in our institutional cohort of patient with GBM, and specifically how choice of sample size and consideration of non-linear transformations may impact on the chances of detecting a prognostic effect. Univariable models did not provide any evidence of a linear or non-linear prognostic relationship between size and OS in our institutional data, however the resampling study suggests that there could be a prognostic role, and that this is more likely to be detected in larger studies. For WTV, log-transformation could also increase the probability of detecting a statistically significant effect. However, WTV is rarely explored as a candidate prognostic variable in patients with GBM[@Henker2017,@Henker2019,@Iliadis2012]. In 65 patients, Iliadis et al. found no significant association between WTV (described as 'edema - T2 abnormality (including the tumor)') and OS using univariable Cox modelling[@Iliadis2012]. It is unclear if any log or other transformation was considered. Other groups have investigated peritumoural oedema alone, rather than WTV, and these studies have shown mixed results[@Wangaryattawanich2015,@Henker2019,@Fuster-Garcia2018,@Zhang2014,@Choi2019]. Fuster-Garcia et al. found no prognostic effect for peritumoural oedema volume in 84 patients[@Fuster-Garcia2018], whereas Wangaryattawanich et al. showed a statistically significant effect for peritumoural oedema when dichotomising volume using a threshold of 85,000mm^3^ in a cohort of 94 patients[@Wangaryattawanich2015].
 
-Tumour diameter and CTV are more commonly investigated[@Tewarie2021,@Henker2017] and there are several studies in similarly sized institutional datasets that also did not show a prognostic effect for either CTV[@Compter2021,@Henker2019,@Kickingereder2018] or diameter[@Park2017a,@Lutterbach2003]. However, a small positive effect size has been shown in studies with larger datasets[@Senders2020,@Li2016]. These findings support the resampling results, which indicates that CTV and diameter could potentially have prognostic effects, detected with larger samples. Li et al. for example found that contrast enhancing tumour volume had a small but statistically significant effect in a cohort of 1226 GBM patients (HR 1.004 95% CI 1.002-1.006, p \<0.001)[@Li2016].
+Tumour diameter and CTV are more commonly investigated[@Tewarie2021,@Henker2017] and there are several studies in similarly sized institutional datasets that also did not show a prognostic effect for either CTV[@Compter2021,@Henker2019,@Kickingereder2018] or diameter[@Park2017a,@Lutterbach2003]. However, a small positive effect size has been shown in studies with larger datasets[@Senders2020,@Li2016]. These findings support the resampling results, which indicates that CTV and diameter could potentially have prognostic effects, detected with larger samples. Li et al. for example found that contrast enhancing tumour volume had a small but statistically significant effect in a cohort of 1226 GBM patients (HR 1.004 95% CI 1.002-1.006, p \<0.001)[@Li2016]. Future studies may be able to leverage multi-institutional networks[@Pati2022] or online imaging repositories to further increase statistical power for studying prognostic biomarkers.
 
 An important consideration in regression modelling is the inclusion of any non-linear transformation of variables[@Steyerberg2009], although this is not routinely documented in prognostic modelling studies in GBM[@Tewarie2021,@Henker2017]. The advantages include more flexible modelling of continuous variables that might not have a simple linear relationship to outcome, but this comes with the drawback of potentially overfitting a model to the development dataset. In our resampling study, logarithmic transformation led to a higher rate of significant models for CTV and WTV, which could explain why some prognostic models that assume linear relationships between volume and outcome return non-significant results. In the present study, the histograms for CTV and WTV show a small positive skew, whereas diameter is normally distributed. This might explain why log-transformation did not have similar impact on diameter in our resampling study.
 
@@ -265,7 +265,7 @@ In univariable models derived from our institutional dataset of patients with GB
 
 <br>
 
-Word count: 2,512
+Word count: 2,734
 
 <br>
 
