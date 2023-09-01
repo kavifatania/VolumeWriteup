@@ -193,7 +193,7 @@ knitr::read_chunk('/Users/Kavi/Radiology/PhD/MachineLearning/data/MLscripts/VolM
 ```{r, VolModSummary, include=FALSE, echo=FALSE}
 ```
 
-```{r volmods, echo=FALSE, tab.cap = 'Summary of univariable Cox proportional hazards models for each tumour size parameter (Whole tumour volume, core tumour volume and diameter) for predicting overall survival (n=279)'}
+```{r volmods, echo=FALSE, tab.cap = 'Summary of univariable Cox proportional hazards models for each tumour size parameter (Whole volume, core volume and diameter) for predicting overall survival (n=279)'}
 ft_vol
 ```
 
