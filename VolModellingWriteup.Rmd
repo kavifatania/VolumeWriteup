@@ -80,7 +80,7 @@ Patients with IDH-wildtype unifocal WHO grade 4 GBM and pre-operative imaging be
 
 Although an association between tumour size and OS was not demonstrated in this large, well curated institutional dataset, resampling suggests a prognostic effect may become apparent if very large datasets and specific data transformations are utilised.
 
-Word count: 270
+Word count: 273
 
 \pagebreak
 
