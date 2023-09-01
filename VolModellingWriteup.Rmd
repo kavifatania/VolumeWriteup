@@ -9,7 +9,7 @@ author:
   - Hitesh Mistry:
       institute: [UofM]
   - Susan C. Short:
-      institute: [DofCO]
+      institute: [LIMR, DofO]
   - James O'Connor:
       institute: [DofCS, DofRC, DofRI]
   - Andrew F. Scarsbrook:
@@ -20,7 +20,7 @@ institute:
   - DofRL: Department of Radiology, Leeds Teaching Hospitals NHS Trust, UK
   - LIMR: Leeds Institute of Medical Research, University of Leeds, Leeds, UK
   - UofM: University of Manchester, Manchester, UK
-  - DofCO: Department of Clinical Oncology, Leeds Teaching Hospitals NHS Trust, UK
+  - DofO: Department of Oncology, Leeds Teaching Hospitals NHS Trust, UK
   - DofCS: Division of Cancer Sciences, The University of Manchester, Manchester, UK
   - DofRC: Department of Radiology, The Christie Hospital, Manchester, UK
   - DofRI: Division of Radiotherapy and Imaging, Institute of Cancer Research, London, UK
@@ -66,19 +66,19 @@ ORCID: https://orcid.org/0000-0003-2421-1083
 
 [Background]{.underline}
 
-An array of prognostic models of glioblastoma incorporating tumour volume or diameter exist - often with inconsistent results. Our aim was to investigate the relationship between overall survival (OS) and tumour size using an institutional dataset of patients with glioblastoma (GBM).
+Various glioblastoma (GBM) prognostic models incorporating tumour volume or diameter have been proposed - often with inconsistent performance. The aim was to investigate the relationship between overall survival (OS) and tumour size using a sequentially collected and large institutional dataset of patients with GBM.
 
 [Methods]{.underline}
 
-Retrospectively identified patients with IDH-wildtype unifocal WHO grade 4 GBM from 2014-2020 with pre-operative imaging were included. Tumours were segmented using deep-learning and manual correction and diameter was measured manually. Association between core or whole tumour volume (CTV or WTV respectively) or diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised splines were used to assess non-linearity. Resampling with 1,000,000 repetitions and varying sample size was used to create Cox models for tumour size - percentage of significant models was calculated per sample size.
+Patients with IDH-wildtype unifocal WHO grade 4 GBM and pre-operative imaging between 2014-2020 were retrospectively reviewed. Tumours were segmented using deep-learning with manual correction and manual diameter measurements. Association between core (enhancing + necrotic tumour), whole tumour (core + peritumoural oedema) volume (CTV/WTV) and diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised splines were used to assess non-linearity. Resampling with 1,000,000 repetitions and varying sample size was used to create Cox models for tumour size and percentage of significant models was calculated per sample size.
 
 [Results]{.underline}
 
-279 patients were included. Median (interquartile range) CTV 28.1cm^3^ (12.6 – 50.3), WTV 103.3cm^3^ (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). Univariable models of volume or diameter ± log transformation showed no association with OS and spline functions did not show a non-linear trend. Resampling led to higher percentages of significant models (p\<0.05) when CTV or WTV was log transformed, and with larger samples. For n=50, 5.1% of WTV vs 5.2% log(WTV), 5.0% CTV vs 7.0% log(CTV) were significant. At n=279, 5.6% WTV and 9.7% log(WTV), 8.6% CTV vs 8.9% log(CTV) had p\<0.05. Larger samples increased the percentage of significant models for diameter. 
+279 patients were included. Median (interquartile range) CTV 28.1cm^3^ (12.6 – 50.3), WTV 103.3cm^3^ (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). Univariable models of volume or diameter ± log transformation showed no association with OS and spline functions did not show a non-linear trend. Resampling led to higher percentages of significant models (p<0.05) when CTV or WTV was log transformed, and with larger samples. For n=50, 5.1% of WTV vs 5.2% log(WTV), 5.0% CTV vs 7.0% log(CTV) were significant. At n=279, 5.6% WTV and 9.7% log(WTV), 8.6% CTV vs 8.9% log(CTV) had p<0.05. Larger samples increased the percentage of significant models for diameter.
 
 [Conclusion]{.underline}
 
-Association between tumour size and OS was not demonstrated in the institutional dataset. Resampling, however, suggests that there may be a prognostic effect for size using larger samples, and after log transformation for volume.
+Although an association between tumour size and OS was not demonstrated in this sequentially collected and large institutional dataset, resampling suggests a prognostic effect may become apparent if very large datasets and specific data transformations are utilised.
 
 Word count: 270
 
@@ -86,10 +86,12 @@ Word count: 270
 
 **[Introduction]{.underline}**
 
-Glioblastoma (GBM) is the most common primary brain malignancy in adults and patients have a median overall survival (OS) of 12-15 months despite maximal oncological treatment (maximum safe surgical resection followed by adjuvant radiotherapy with concurrent temozolomide and further 6 cycles of adjuvant temozolomide -- Stupp protocol)[@Stupp2005;@Stupp2009].
+Glioblastoma (GBM) is the most common primary brain malignancy in adults and patients have a median overall survival (OS) of 12-15 months despite intensive oncological treatment (maximum safe surgical resection followed by adjuvant radiotherapy with concurrent temozolomide and further 6 cycles of adjuvant temozolomide -- Stupp protocol)[@Stupp2005;@Stupp2009].
 
 
-There has been great interest in investigating which prognostic factors are important for patients with GBM, and many prognostic models commonly include imaging biomarkers[@Tewarie2021]. Magnetic resonance imaging (MRI) is routinely performed for patients with GBM throughout their treatment journey and therefore is a popular modality for exploring prognostic imaging biomarkers. The diameter of the tumour core is routinely evaluated in clinical practice and is amongst the most common of the imaging predictors of OS to be investigated[@Henker2017]. There are now several methods available for automated or semi-automated segmentation of the different habitats of GBM, and it has therefore become more feasible to integrate tumour volumes into prognostic models, including in larger institutional datasets[@Henker2017;@Rudie2019;@Forghani2020].
+There has been significant interest in investigating which prognostic factors are important for patients with GBM, in order to better stratify patients into different risk groups or to try to offer individualised risk prediction ('personalised medicine'). 
+
+and many prognostic models commonly include imaging biomarkers[@Tewarie2021]. Magnetic resonance imaging (MRI) is routinely performed for patients with GBM throughout their treatment journey and therefore is a popular modality for exploring prognostic imaging biomarkers. The diameter of the tumour core is routinely evaluated in clinical practice and is amongst the most common of the imaging predictors of OS to be investigated[@Henker2017]. There are now several methods available for automated or semi-automated segmentation of the different habitats of GBM, and it has therefore become more feasible to integrate tumour volumes into prognostic models, including in larger institutional datasets[@Henker2017;@Rudie2019;@Forghani2020].
 
 
 Prognostic modelling studies have been inconsistent regarding the prognostic effect of tumour diameter and volume[@Henker2017,@Peeken2018;@Lacroix2001;@Compter2021;@Senders2020]. Some of this inconsistency may be due to the sample sizes that are used to derive the prognostic models. Large cohort studies of GBM have demonstrated a weak prognostic effect of tumour diameter[@Senders2020], but smaller studies have often resulted in mixed  results[@Compter2021;@Soltani2021;@Park2017a]. Similar findings are observed for tumour volume[@Henker2017;@Li2016;@Molinaro2020]. As well as variation in sample size, some of the inconsistency may be due to variations in handling continuous variables during the modelling process, for example leading to dichotomisation[@Wangaryattawanich2015], assumptions of a linear relationship to outcome[@Henker2017] and use of univariable model significance to select predictors into multivariable models[@Park2017a]. All these choices are known to impact upon the modelling process and may impact on the ability to determine accurate prognostic effects of the candidate predictors[@Harrell2015;@Riley2019b].
