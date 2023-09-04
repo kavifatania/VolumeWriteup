@@ -99,6 +99,59 @@ Relevance statement word count: 37 (40 max)
 
 Glioblastoma; Prognosis; Tumor Volume
 
+
+[Abbreviations]{.underline}
+
+BraTs - Brain Tumour image segmentation benchmark
+
+CaPTk - Cancer Imaging Phenomics Toolkit
+
+CLI - Command line interface
+
+CI - Confidence interval
+
+CV - Core volume
+
+DSC - Dice similarity coefficient
+
+DICOM - Digital Imaging and Communications in Medicine
+
+FeTS - Federated Tumor Segmentation
+
+FLAIR - Fluid attenuated inversion recovery
+
+GBM - Glioblastoma
+
+GUI - Graphical user interface
+
+HR - Hazard ratio
+
+IQR - Interquartile range
+
+IDH - Isocitrate dehydrogenase
+
+KS - Kolmogorov-Smirnov
+
+MDT - Multidisciplinary team
+
+MGMT	- O6-methylguanine-DNA methyltransferase 
+
+NIfTI - Neuroimaging Informatics Technology Initiative 
+
+OS - Overall survival
+
+PACS - Picture Archive and Communication System
+
+T1Gd - T1-weighted gadolinium enhanced 
+
+T1W - T1-weighted 
+
+T2W - T2-weighted 
+
+VOI - Volume of interest
+
+WV - Whole volume
+
 \pagebreak
 
 **[Introduction]{.underline}**
@@ -132,13 +185,13 @@ All consecutive patients (16 years and over) with histologically proven GBM trea
 
 *[Data preparation]{.underline}*
 
-A summary of the data preparation is shown in **Figure \@ref(fig:flowchart)**. DICOM image preparation was performed in python 3.9[@VanRossum2009]. DICOM images were retrieved from the institutional picture archive and communication system (PACS) and pseudonymised, and the image acquisition parameters are summarised in **Supplementary Table 1**. Images were converted to Neuroimaging Informatics Technology Initiative (NIfTI) file format using the dicom2nifti (v2.3.4) package[@Icometrix].
+A summary of the data preparation is shown in **Figure \@ref(fig:flowchart)**. Digital Imaging and Communications in Medicine (DICOM) image preparation was performed in python 3.9[@VanRossum2009]. DICOM images were retrieved from the institutional picture archive and communication system (PACS) and pseudonymised, and the image acquisition parameters are summarised in **Supplementary Table 1**. Images were converted to Neuroimaging Informatics Technology Initiative (NIfTI) file format using the dicom2nifti (v2.3.4) package[@Icometrix].
 
 ```{r flowchart, fig.cap="Flowchart summarising the preparation of imaging data for statistical analysis", echo=FALSE,fig.topcaption=TRUE}
 knitr::include_graphics("figures/Fig1.tiff")
 ```
 
-*CV = Core Volume, FeTS = Federated Tumor Segmentation software, GBM = glioblastoma, IDHwt = isocitrate dehydrogenase wild-type, NifTI = Neuroimaging Informatics Technology Initiative, PACS = picture archive and communication system, T1Gd = gadolinium-enhanced T1-weighted imaging, WV = Whole Volume*
+*CV = Core Volume, DICOM = Digital Imaging and Communications in Medicine, FeTS = Federated Tumor Segmentation software, GBM = glioblastoma, IDHwt = isocitrate dehydrogenase wild-type, NifTI = Neuroimaging Informatics Technology Initiative, PACS = picture archive and communication system, T1Gd = gadolinium-enhanced T1-weighted imaging, WV = Whole Volume*
 
 <br>
 
@@ -278,7 +331,7 @@ Although univariable models derived from our large, well curated institutional d
 
 <br>
 
-Word count: 2,734
+Word count: 2,954
 
 <br>
 
@@ -293,3 +346,24 @@ KF is a 4ward North Clinical PhD fellow funded by Wellcome award (203914/Z/16/Z)
 <br>
 
 ## References
+
+\pagebreak
+
+[Figure and table legends]{.underline}
+
+Figure  \@ref(fig:flowchart) - Flowchart summarising the preparation of imaging data for statistical analysis
+
+Figure \@ref(fig:gbms) - Definition of tumour volumes used in the study
+
+Figure \@ref(fig:boxplotdiam) - Boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for tumour diameter vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legend). The dotted horizontal line represents the p-value threshold for statistical significance (0.05).
+
+Figure \@ref(fig:boxplotwtv) - Boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for whole volume vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legend). The dotted horizontal line represents the p-value threshold for statistical significance (0.05).
+
+Figure \@ref(fig:boxplotcore) - Boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for core tumour volume vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legend). The dotted horizontal line represents the p-value threshold for statistical significance (0.05).
+
+Table \@ref(tab:demotable) - Summary of patient demographics and treatment (n=279)
+
+Table \@ref(tab:volmods) - Summary of univariable Cox proportional hazards models for each tumour size parameter (Whole volume, core volume and diameter) for predicting overall survival (n=279)
+
+Table \@ref(tab:simresults) - Results of resampling study
+
