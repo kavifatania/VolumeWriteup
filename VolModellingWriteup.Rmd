@@ -64,23 +64,40 @@ ORCID: https://orcid.org/0000-0003-2421-1083
 
 **[Abstract]{.underline}**
 
-[Background]{.underline}
+[Objectives]{.underline}
 
-Various glioblastoma (GBM) prognostic models incorporating tumour volume or diameter have been proposed - often with inconsistent performance. The aim was to investigate the relationship between overall survival (OS) and tumour size using large, well curated institutional dataset of patients with GBM.
+Various glioblastoma (GBM) prognostic models incorporating tumour volume or diameter have been proposed - often with inconsistent performance. The aim was to investigate the relationship between overall survival (OS) and tumour size using a well curated institutional dataset of patients with GBM.
 
 [Methods]{.underline}
 
-Patients with IDH-wildtype unifocal WHO grade 4 GBM and pre-operative imaging between 2014-2020 were retrospectively reviewed. Tumours were segmented using deep-learning with manual correction and manual diameter measurements. Association between core (enhancing + necrotic tumour), whole (core + peritumoural oedema) volume (CV/WV) and diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised splines were used to assess non-linearity. Resampling with 1,000,000 repetitions and varying sample size was used to create Cox models for tumour size and percentage of significant models was calculated per sample size.
+Patients with IDH-wildtype unifocal WHO grade 4 GBM and pre-operative imaging between 2014-2020 were retrospectively reviewed. Tumours were segmented using deep-learning with manual correction and manual diameter measurements. Association between core, whole volume (CV/WV) and diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised splines were used to assess non-linearity. Resampling with 1,000,000 repetitions and varying sample size was used to create Cox models and percentage of significant models was calculated.
 
 [Results]{.underline}
 
-279 patients were included. Median (interquartile range) CV 28.1cm^3^ (12.6 – 50.3), WV 103.3cm^3^ (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). Univariable models of volume or diameter ± log transformation showed no association with OS and spline functions did not show a non-linear trend. Resampling led to higher percentages of significant models (p<0.05) when CV or WV was log transformed, and with larger samples. For n=50, 5.1% of WV vs 5.2% log(WV), 5.0% CV vs 7.0% log(CV) were significant. At n=279, 5.6% WV and 9.7% log(WV), 8.6% CV vs 8.9% log(CV) had p<0.05. Larger samples increased the percentage of significant models for diameter.
+279 patients were included. Median (interquartile range) CV 28.1cm^3^ (12.6 – 50.3), WV 103.3cm^3^ (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). Univariable models of size ± log transformation showed no association with OS and a non-linear trend was not observed. Resampling led to higher percentages of significant models (p<0.05) when CV or WV was log transformed, and with larger samples for volume and diameter. For n=50, 5.1% of WV vs 5.2% log(WV), 5.0% CV vs 7.0% log(CV) were significant. At n=279, 5.6% WV and 9.7% log(WV), 8.6% CV vs 8.9% log(CV) had p<0.05.
 
 [Conclusion]{.underline}
 
-Although an association between tumour size and OS was not demonstrated in this large, well curated institutional dataset, resampling suggests a prognostic effect may become apparent if very large datasets and specific data transformations are utilised.
+Although an association between tumour size and OS was not demonstrated in this large, well curated institutional dataset, resampling suggests a prognostic effect may become apparent with very large datasets and specific data (log) transformations.
 
-Word count: 273
+Abstract word count: 244 (250 max)
+
+[Clinical relevance]{.underline}
+
+Prognostic imaging biomarkers for GBM are commonly evaluated but clinicians should consider whether these prognostic factors such as tumour size have been appropriately modeled before using them to evaluat their patients or incorporate into their own research.
+
+Relevance statement word count: 37 (40 max)
+
+[Key points]{.underline}
+
+* Tumour size has been inconsistently associated with overall survival in patients with glioblastoma
+* Log transformation and increased sample size improved the chance of detecting a prognostic relationship
+* Prognostic modelling in GBM should include data transformation and appropriately sample sizes  
+
+
+[Key words]{.underline}
+
+Glioblastoma; Prognosis; Tumor Volume
 
 \pagebreak
 
@@ -109,7 +126,7 @@ This was a retrospective study and therefore informed patient consent was not fe
 
 *[Patient selection]{.underline}*
 
-All patients (16 years and over) with histologically proven GBM treated at a single tertiary referral centre between 2014-2020 were retrospectively identified from neuro-oncology multidisciplinary team (MDT) records. The catchment area includes 3.9 – 4.4 million adults, and over this period, 3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were: absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented IDH mutation on immunohistochemistry or cytogenetic testing.
+All consecutive patients (16 years and over) with histologically proven GBM treated at a single tertiary referral centre between 2014-2020 were retrospectively identified from neuro-oncology multidisciplinary team (MDT) records. The catchment area includes 3.9 – 4.4 million adults, and over this period, 3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were: absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented IDH mutation on immunohistochemistry or cytogenetic testing.
 
 <br>
 
