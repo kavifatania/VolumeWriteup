@@ -1,13 +1,13 @@
 ---
 title: |
-  Title: Tumour size and overall survival in unifocal glioblastoma: a univariable prognostic modelling and resampling study
+  Title: Tumour size and overall survival in a cohort of patients with unifocal glioblastoma: a univariable prognostic modelling and resampling study
 author:
   - Kavi Fatania:
       institute: [DofRL, LIMR]
   - Russell Frood:
       institute: [DofRL, LIMR]
   - Hitesh Mistry:
-      institute: [UofM]
+      institute: [DofCS]
   - Susan C. Short:
       institute: [LIMR, DofO]
   - James O'Connor:
@@ -19,7 +19,6 @@ author:
 institute:
   - DofRL: Department of Radiology, Leeds Teaching Hospitals NHS Trust, UK
   - LIMR: Leeds Institute of Medical Research, University of Leeds, Leeds, UK
-  - UofM: University of Manchester, Manchester, UK
   - DofO: Department of Oncology, Leeds Teaching Hospitals NHS Trust, UK
   - DofCS: Division of Cancer Sciences, The University of Manchester, Manchester, UK
   - DofRC: Department of Radiology, The Christie Hospital, Manchester, UK
@@ -31,7 +30,7 @@ output:
  bookdown::word_document2:
     fig_caption: yes
     pandoc_args:
-    - --csl=Extras/european-radiology.csl
+    - --csl=Extras/radiology.csl
     - --citation-abbreviations=Extras/abbreviations.json
     - --filter=pandoc-crossref
     - --lua-filter=Extras/scholarly-metadata.lua
@@ -64,75 +63,52 @@ ORCID: https://orcid.org/0000-0003-2421-1083
 
 **[Abstract]{.underline}**
 
-[Objectives]{.underline}
+[Purpose]{.underline}
 
-Various glioblastoma (GBM) prognostic models incorporating tumour volume or diameter have been proposed - often with inconsistent performance. The aim was to investigate the relationship between overall survival (OS) and tumour size using a well curated institutional dataset of patients with GBM.
+Various glioblastoma (GBM) prognostic models incorporating tumour volume or diameter have been proposed - often with inconsistent performance. The aim was to investigate the relationship between overall survival (OS) and tumour size using a well curated dataset of patients with GBM.
 
 [Methods]{.underline}
 
-Patients with IDH-wildtype unifocal WHO grade 4 GBM and pre-operative MRI between 2014-2020 were retrospectively reviewed. Tumours were segmented using deep-learning with manual correction and manual diameter measurements. Association between core volume, whole volume (CV/WV) and diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised splines were used to assess non-linearity. Resampling with 1,000,000 repetitions and varying sample size was used to create Cox models and percentage of significant models was calculated.
+279 patients with IDH-wildtype unifocal WHO grade 4 GBM and pre-operative MRI between 2014-2020 were retrospectively included. Tumours were segmented using deep-learning with manual correction and manual diameter measurements. Association between core volume, whole volume (CV/WV) and diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised splines were used to assess non-linearity. Resampling with 1,000,000 repetitions and varying sample size was used to create Cox models and percentage of significant models was calculated.
 
 [Results]{.underline}
 
-279 patients were included. Median (interquartile range) CV 28.1cm^3^ (12.6 – 50.3), WV 103.3cm^3^ (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). No association with OS was observed with univariable models of size ± log transformation. Resampling led to higher percentages of significant models (p<0.05) when CV or WV was log transformed, and for volume and diameter using larger samples. For n=50, 5.1% of WV vs 5.2% log(WV), 5.0% CV vs 7.0% log(CV) were significant. At n=279, 5.6% WV and 9.7% log(WV), 8.6% CV vs 8.9% log(CV) had p<0.05.
+Median (interquartile range) CV 28.1cm^3^ (12.6 – 50.3), WV 103.3cm^3^ (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). No association with OS was observed with univariable models of size ± log transformation or with non-linear modelling. Resampling led to higher percentages of significant models (p<0.05) when CV or WV was log transformed, and for volume and diameter using larger samples. For n=50, 5.1% of WV vs 5.2% log(WV), 5.0% CV vs 7.0% log(CV) were significant. At n=279, 5.6% WV and 9.7% log(WV), 8.6% CV vs 8.9% log(CV) had p<0.05.
 
 [Conclusion]{.underline}
 
-Although an association between tumour size and OS was not demonstrated initially in this large, well curated institutional dataset, resampling suggests a univariable prognostic effect may become apparent with very large datasets and specific data (log) transformations.
+Although an association between tumour size and OS was not demonstrated initially in this well-curated institutional dataset, resampling suggests a univariable prognostic effect may become apparent with very large datasets and specific data (log) transformations.
 
-Abstract word count: 244 (250 max)
-
-[Clinical relevance]{.underline}
-
-Prognostic imaging measurements for GBM such as core volume or whole volume are commonly evaluated but clinicians should consider whether these biomarkers have been appropriately modeled before using them to evaluate their patients or incorporate into their own research.
-
-Relevance statement word count: 37 (40 max)
+Abstract word count: 247
 
 [Key points]{.underline}
 
 * An inconsistent association between tumour size and overall survival has been reported in patients with glioblastoma
 * Log transformation and increased sample size improved the chance of detecting a prognostic relationship
-* Prognostic modelling in GBM should include data transformation and appropriately sample sizes  
+* Prognostic modelling in GBM should include data transformation and appropriate sample sizes 
+
+
+[Summary statement]{.underline}
+
+**Glioblastoma size is often considered for inclusion into multivariable models based upon univariable association to overall survival, but in our cohort of GBM patients and use of resampling we find that this approach can be affected by the sample size and data transformation.**
 
 
 [Key words]{.underline}
 
-Glioblastoma; Prognosis; Tumor Volume
+Brain Neoplasms/diagnostic imaging; Glioblastoma; Tumor Volume; Prognosis; Survival Analysis
 
 
-[Abbreviations]{.underline}
+[Abbreviations]{.underline} (allow 10 max)
 
 BraTs - Brain Tumour image segmentation benchmark
 
 CaPTk - Cancer Imaging Phenomics Toolkit
 
-CLI - Command line interface
-
-CI - Confidence interval
-
 CV - Core volume
-
-DSC - Dice similarity coefficient
-
-DICOM - Digital Imaging and Communications in Medicine
 
 FeTS - Federated Tumor Segmentation
 
-FLAIR - Fluid attenuated inversion recovery
-
-GBM - Glioblastoma
-
-GUI - Graphical user interface
-
 HR - Hazard ratio
-
-IQR - Interquartile range
-
-IDH - Isocitrate dehydrogenase
-
-KS - Kolmogorov-Smirnov
-
-MDT - Multidisciplinary team
 
 MGMT	- O6-methylguanine-DNA methyltransferase 
 
@@ -140,21 +116,13 @@ NIfTI - Neuroimaging Informatics Technology Initiative
 
 OS - Overall survival
 
-PACS - Picture Archive and Communication System
-
-T1Gd - T1-weighted gadolinium enhanced 
-
-T1W - T1-weighted 
-
-T2W - T2-weighted 
-
 VOI - Volume of interest
 
 WV - Whole volume
 
 \pagebreak
 
-**[Introduction]{.underline}**
+**[Introduction]{.underline}**(400-600 max)
 
 Glioblastoma (GBM) is the most common primary brain malignancy in adults and patients have a median overall survival (OS) of 12-15 months despite intensive oncological treatment (maximum safe surgical resection followed by adjuvant radiotherapy with concurrent temozolomide and further 6 cycles of adjuvant temozolomide -- the Stupp protocol)[@Stupp2005;@Stupp2009].
 
@@ -169,23 +137,27 @@ The aim of this study was to investigate the prognostic effect of tumour volume 
 
 <br>
 
-**[Materials and methods]{.underline}**
+**[Materials and methods]{.underline}**(800-1300 max)
 
 *[Ethical approval]{.underline}*
 
-This was a retrospective study and therefore informed patient consent was not feasible. Ethical approval and institutional data access was approved via local ethical review committee (REC ref: 19/YH/0300, IRAS project ID: 255585).
+This was a retrospective study and therefore informed patient consent was not feasible. Ethical approval and institutional data access was approved via local ethical review committee (REC ref: 19/YH/0300, IRAS project ID: 255585). This patient cohort has been described in a prior study, which focused on the imaging findingsi of developing/early GBM and did not include any detailed analysis of tumour size and its relationship to outcome[@Currie2023].
 
 <br>
 
-*[Patient selection]{.underline}*
+*[Patient selection and characteristics]{.underline}*
 
-All consecutive patients (16 years and over) with histologically proven GBM treated at a single tertiary referral centre between 2014-2020 were identified retrospectively from neuro-oncology multidisciplinary team (MDT) records. The catchment area includes 3.9 – 4.4 million adults, and over this period, 3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were: absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented IDH mutation on immunohistochemistry or cytogenetic testing.
+All consecutive patients (16 years and over) with histologically proven GBM treated at a single tertiary referral centre between 2014-2020 were identified retrospectively from neuro-oncology multidisciplinary team (MDT) records. The catchment area includes 3.9 – 4.4 million adults, and over this period, 3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were: absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented IDH mutation on immunohistochemistry or cytogenetic testing. 
+
+Demographic, clinical and cytogenetic data were obtained from the electronic health records using in-house software. Data included patient age, sex and type of operation. Histopathological and cytogenetic data included histology, IDH1 and 2 mutation and O6-methylguanine-DNA methyltransferase (MGMT) promoter methylation. Extent of resection was estimated by the same consultant neuroradiologist using the immediate (48-72 hour) post-resection contrast-enhanced MRI, and grouped based upon the amount of contrast enhancing and necrotic tumour resected – (i) 100%, (ii) \≥90% or (iii) \<90%. Adjuvant treatment was categorized as (i) full Stupp protocol – 60 Gy in 30 fractions radiotherapy with concomitant and 6 cycles adjuvant temozolomide; (ii) partial Stupp – 60 Gy in 30 fractions radiotherapy but temozolomide discontinued during either concomitant or adjuvant treatment phase; (iii) non-Stup – any other treatment protocol.
+
+279 patients were included - 39% (108/279) of patients were female and the mean age was 61 years (range 31 -- 85 years). Mean age was 62 (range 34--85 years) for female and 61 (31--81 years) for male patients. Further demographic information about the study participants is found in **Table \@ref(tab:demotable)**.  
 
 <br>
 
 *[Data preparation]{.underline}*
 
-A summary of the data preparation is shown in **Figure \@ref(fig:flowchart)**. Digital Imaging and Communications in Medicine (DICOM) image preparation was performed in python 3.9[@VanRossum2009]. DICOM images were retrieved from the institutional picture archive and communication system (PACS) and pseudonymised, and the image acquisition parameters are summarised in **Supplementary Table 1**. Images were converted to Neuroimaging Informatics Technology Initiative (NIfTI) file format using the dicom2nifti (v2.3.4) package[@Icometrix].
+A summary of the data preparation and number of patients excluded with reasons is shown in **Figure \@ref(fig:flowchart)**. Digital Imaging and Communications in Medicine (DICOM) image preparation was performed in python 3.9[@VanRossum2009]. DICOM images were retrieved from the institutional picture archive and communication system (PACS) and pseudonymised, and the image acquisition parameters are summarised in **Supplementary Table 1**. Images were converted to Neuroimaging Informatics Technology Initiative (NIfTI) file format using the dicom2nifti (v2.3.4) package[@Icometrix].
 
 ```{r flowchart, fig.cap="Flowchart summarising the preparation of imaging data for statistical analysis", echo=FALSE,fig.topcaption=TRUE}
 knitr::include_graphics("figures/Fig1.tiff")
@@ -220,9 +192,11 @@ Tumour diameter was defined as the maximum axial or cranio-caudal diameter of th
 
 *[Statistical analysis]{.underline}*
 
-All statistical analysis was performed in `r R.version.string` and overseen by a career statistician (HM). Association between CV, WV or tumour diameter with overall survival (OS) was investigated using univariable Cox regression modelling. Hazard ratios (HRs), concordance indices and p-values for each model were used to assess performance. Any non-linear relationships between OS and size (volume or diameter) was explored using both logarithmic transformation and penalised spline function, the latter implemented using the 'pspline' function within the 'survival' package[@Therneau2023]. Penalised spline functions were used to assess for any trends in the data that might not be seen with a linear fit, as penalised splines allow a smooth curve to be fit to data[@Perperoglou2019]. Overfitting to the data points is discouraged by the inclusion of a roughness penalty, and the implementation doesn't require any pre-specification of the number of internal boundaries or knots. Model fits were assessed by plotting each tumour size parameter against the log-hazard ratio.
+All statistical analysis was performed in `r R.version.string` and overseen by a career statistician (HM). Univariable association between CV, WV or tumour diameter with overall survival (OS) was investigated using Cox regression modelling. Hazard ratios (HRs), concordance indices and p-values for each model were used to assess performance. Any non-linear relationships between OS and size (volume or diameter) was explored using both logarithmic transformation and penalised spline function, the latter implemented using the 'pspline' function within the 'survival' package[@Therneau2023]. Penalised spline functions were used to assess for any trends in the data that might not be seen with a linear fit, as penalised splines allow a smooth curve to be fit to data[@Perperoglou2019]. Overfitting to the data points is discouraged by the inclusion of a roughness penalty, and the implementation doesn't require any pre-specification of the number of internal boundaries or knots. Model fits were assessed by plotting each tumour size parameter against the log-HR.
 
-To assess the impact that log-transformation and sample size could have on potentially detecting a prognostic effect of tumour size on OS, we conducted a resampling study. Using different sample sizes (50, 100, 150, 200, 250, 279), bootstrapped samples were generated from the original dataset with replacement. A Cox regression model for each tumour size variable, both with and without log-transformation, was created and the model's p-value extracted. Bootstrapping was carried out for 1,000,000 repetitions at each sample size and for each of the tumour size variables. The percentage of models that had a p-value \<0.05, \<0.01 and \<0.001 was calculated across the 1,000,000 repetitions per sample size. Any differences in the distribution of p-values between the sample sizes and between log-transformed and non-transformed models was assessed with two-sided Kolmogorov-Smirnov (KS) tests.
+Multivariable association of CV, WV or diameter to OS was also evaluated by (i) adjusting each size variable for either age, sex, type of surgery, MGMT promoter methylation status or adjuvant oncological treatment (ie. size variable + one clinical variable in turn) and (ii) adjusting size for all clinical parameters. As our aim was to assess the prognostic impact of tumour size, in multivariable models, this was assessed using the HR for each size parameter and the Wald test p-value for the size variable’s coefficient rather than the overall model p-value.
+
+To assess the impact that log-transformation and sample size could have on potentially detecting a prognostic effect of tumour size on OS, we conducted a resampling study. Using different sample sizes (50, 100, 150, 200, 250, 258 or 279), bootstrapped samples were generated from the original dataset with replacement. For any multivariable models that were adjusted for MGMT methylation status, the maximum sample size was 258 (not 279) due to the number of cases with a known result. Bootstrapping was carried out for 1,000,000 repetitions at each sample size and for each of the tumour size variables and a Cox regression model for each tumour size variable, both with and without log-transformation, was created. For univariable models, the percentage of models in which the overall model Wald test p-value \<0.05, \<0.01 and \<0.001 was calculated across the 1,000,000 repetitions per sample size. For multivariable models, the percentage of models in which the Wald test p-value for the coefficient of tumour size (rather than the overall model Wald test significance) \<0.05 was calculated across the 1,000,000 repetitions per sample size. Any differences in the distribution of p-values between the sample sizes and between log-transformed and non-transformed models was assessed with two-sided Kolmogorov-Smirnov tests.
 
 <br>
 
@@ -230,7 +204,7 @@ To assess the impact that log-transformation and sample size could have on poten
 
 *[Demographics of the study population]{.underline}*
 
-After exclusion of ineligible patients, 279 patients with GBM were included, with 236 deaths before the censor date of 31/10/2020. Demographic information for the GBM patients is summarised in **Table \@ref(tab:demotable)**. Median OS was 12 months (95% CI 11 -- 14 months), median age was 62 years (IQR 55 -- 68 years), 39% (108/279) of patients were female, and 26% (72/279) patients had a surgical biopsy of their GBM (with all remaining patients undergoing resection of their tumour to varying extent). Median (IQR) CV was 28.1cm^3^ (12.6 -- 50.3), WV was 103.3cm^3^ (45.6 -- 160.1) and tumour diameter was 4.4cm (3.3-5.4). Histograms of tumour size (**Supplementary Figure 1**) showed that distributions of CV and WV were slightly positively skewed and tumour diameter was normally distributed prior to any transformation. These data confirm that our population is representative of patients diagnosed with GBM in other typical neurosciences centres[@Verduin2021].
+Of the 279 patients included, 236 deaths occurred before the censor date of 31/10/2020. Demographic information for the GBM patients is summarised in **Table \@ref(tab:demotable)**. Median OS was 12 months (95% CI 11 -- 14 months), median follow-up time was 45 months (maximum 70 months) and 25% (71/279) patients had a surgical biopsy of their GBM. 20% (57/279) of patients had 100% resection of tumour core and 21% (58/279) completed the full Stupp protocol of adjuvant treatment. Median (IQR) CV was 28.1cm^3^ (12.6 -- 50.3), WV was 103.3cm^3^ (45.6 -- 160.1) and tumour diameter was 4.4cm (3.3-5.4). Histograms of tumour size (**Supplementary Figure 1**) showed that distributions of CV and WV were slightly positively skewed and tumour diameter was normally distributed prior to any transformation. These data confirm that our population is representative of patients diagnosed with GBM in other typical neurosciences centres[@Verduin2021].
 
 ```{r, include=FALSE, cache=FALSE, echo=FALSE}
 knitr::read_chunk('/Users/Kavi/Radiology/PhD/MachineLearning/data/MLscripts/Demographics.R')
@@ -247,9 +221,9 @@ ft_demo
 
 *[Segmentations and Univariable Cox models of tumour size]{.underline}*
 
-The mean (± standard deviation) DSC for core and oedema segmentations was 0.94 ± 0.05 and 0.97 ± 0.03 respectively, which are equivalent to values published in the BRATS segmentation dataset, in which multiple experts raters segment the same GBM images, and our segmentation concordance was therefore within the expected variation of inter-rater agreement[@Menze2015].
+The mean (± standard deviation) dice score for core and oedema segmentations was 0.94 ± 0.05 and 0.97 ± 0.03 respectively, which are equivalent to values published in the BRATS segmentation dataset, in which multiple experts raters segment the same GBM images, and our segmentation concordance was therefore within the expected variation of inter-rater agreement[@Menze2015].
 
-**Table \@ref(tab:volmods)** summarises the univariable Cox regression models for CV, WV and diameter, both with and without log-transformation. The results of the models derived from the institutional GBM images show limited evidence for a prognostic relationship between tumour volume or diameter and OS. C-indices for all models were 0.5, and all hazard ratios (HRs) crossed 1.
+**Table \@ref(tab:volmods)** summarises the univariable Cox regression models for CV, WV and diameter, with and without log-transformation. The results of the models derived from the institutional GBM images show limited evidence for a univariable prognostic relationship between tumour volume or diameter and OS. C-indices for all models were 0.5, and all hazard ratios (HRs) crossed 1.
 
 ```{r, include=FALSE, cache=FALSE}
 knitr::read_chunk('/Users/Kavi/Radiology/PhD/MachineLearning/data/MLscripts/VolMod.R')
@@ -267,13 +241,28 @@ ft_vol
 
 <br>
 
-In **Supplementary Figure 2a-c**, each tumour size parameter (with and without log-transformation) is plotted against the log-hazard ratio. The fit of a linear function to the data is compared with the use of a penalised splines, and these suggest that there is limited evidence that the tumour size parameters have a prognostic relationship - the model closely following the reference line for linear and non-linear functions. These results show that within our large, well curated single institutional dataset, there is no evidence to support a linear or non-linear prognostic relationship between OS and size using univariable Cox proportional hazards models.
+
+
+In **Supplementary Figure 2a-c**, each tumour size parameter (with and without log-transformation) is plotted against the log-HR. The fit of a linear function to the data is compared with the use of a penalised splines, and these suggest that there is limited evidence that the tumour size parameters have a univariable prognostic relationship - the model closely following the reference line for linear and non-linear functions. These results show that within our single institutional cohort, there is no evidence to support a univariable linear or non-linear prognostic relationship between OS and size.
+
+
+In multivariable analyses, however, there is evidence of a prognostic association between size and OS when adjusting for clinical variables. A summary of the association of size variables in multivariable models with OS is shown in **Table \@ref(tab:bivar)**. CV, WV, log(WV) and diameter adjusted for type of surgery show a statistically significant association with OS, and although not significant at the 0.05 level, the HRs for log(CV) and log(diameter) are relatively wide, especially the latter indicating uncertainty in the HR estimate. Similarly, for the model adjusted for all clinical variables, only diameter remains statistically significant at the 0.05 threshold, however the HR for log(CV), log(WV) and log(diameter) do suggest a potentially prognostic effect with relatively wider confidence intervals (and less certainty) for HR estimate of the latter two variables. The univariable and multivariable prognostic associations of each clinical variable to OS is provided in **Supplementary Tables 2a-b**. Our cohort of GBM does therefore suggest that size is associated with OS in multivariable models and whilst several parameters do not achieve statistical significance there is supportive evidence of a potential prognostic relationship.  
+
+
+```{r, Bivariable, include=FALSE, echo=FALSE}
+```
+
+```{r bivar, tab.cap='Table of the prognostic effect of each tumour size parameter (Whole volume, core volume and diameter) within multivariable models predicting overall survival that have been adjusted for selected clinical variables (n=279)', echo=FALSE}
+ft_univ
+```
+
+*Each row of the table presents the results from the Cox proportional hazards models that include the tumour size size variable specified by the column name (either diameter, core or whole volume or their log-transformed versions) and the clinical variable indicated in the 'Variable' column. The stated hazard ratios (and 95% confidence intervals) refer to the selected tumour size variable and not the clinical variable indicated in the 'Variable' column. The stated p-values refer to the Wald test for the regression coefficient of the tumour size variable and not the overall multivariable Cox model significance/p-value*
 
 <br>
 
 *[Resampling study]{.underline}*
 
-The results of the resampling study are shown in **Table \@ref(tab:simresults)**. For all size parameters, higher percentages of models with p\<0.05 were seen as the sample size increased, and for tumour volume (CV or WV), also after log transformation. 
+The results of the univariable resampling study are shown in **Table \@ref(tab:simresults)**. For all size parameters, higher percentages of models with p\<0.05 were seen as the sample size increased, and for tumour volume (CV or WV), also after log transformation. 
 
 ```{r, SetupVolSimResults, include=FALSE, echo=FALSE}
 ```
@@ -287,7 +276,7 @@ ft_volsim
 
 <br>
 
-For WV, 5.14 vs 5.60% (n=50 vs n=279), for CV 5.07 vs 8.60% and for diameter 5.43 vs 6.39% models had p-values\<0.05 across all repetitions on non-transformed data. The distributions of p-values (across all repetitions per sample size at n=50 vs n=279) differed significantly on two-sided KS testing (all KS p-values\<0.0001). Considering log-transformation, the increase in models with p-values\<0.05 for WV versus log(WV) at n=50 (5.14 WV vs 5.20% log(WV)) was not reflected in a significantly different distribution of p-values on KS testing (KS p=0.92). However, there were significant differences observed in the distribution of p-values before and after log-transformation for CV at n=50 (5.07 vs 7.07%), and both CV (8.60 vs 8.94%) and WV (5.60 vs 9.70%) at n=279 (all KS p-values\<0.0001). For diameter, log-transformation did not lead to consistently increased percentages of models with p-values\<0.05. At n=50, 5.43 vs 5.95% (diameter vs log(diameter)) and at n=279, 6.39 vs 6.13% (diameter vs log(diameter)) models across all repetitions had p-values\<0.05.  **Supplementary Tables 2a-b** also show the percentages of models with p\<0.01 and p\<0.001, and this shows the same overall trend for the tumour size parameters, but with successively lower percentages of models as the p-value threshold is lowered.
+For WV, 5.14 vs 5.60% (n=50 vs n=279), for CV 5.07 vs 8.60% and for diameter 5.43 vs 6.39% models had p-values\<0.05 across all repetitions on non-transformed data. The distributions of p-values (across all repetitions per sample size at n=50 vs n=279) differed significantly on two-sided KS testing (all KS p-values\<0.0001). Considering log-transformation, the increase in models with p-values\<0.05 for WV versus log(WV) at n=50 (5.14 WV vs 5.20% log(WV)) was not reflected in a significantly different distribution of p-values on KS testing (KS p=0.92). However, there were significant differences observed in the distribution of p-values before and after log-transformation for CV at n=50 (5.07 vs 7.07%), and both CV (8.60 vs 8.94%) and WV (5.60 vs 9.70%) at n=279 (all KS p-values\<0.0001). For diameter, log-transformation did not lead to consistently increased percentages of models with p-values\<0.05. At n=50, 5.43 vs 5.95% (diameter vs log(diameter)) and at n=279, 6.39 vs 6.13% (diameter vs log(diameter)) models across all repetitions had p-values\<0.05.  **Supplementary Tables 3a-b** also show the percentages of models with p\<0.01 and p\<0.001, and this shows the same overall trend for the tumour size parameters, but with successively lower percentages of models as the p-value threshold is lowered.
 
 **Figure \@ref(fig:boxplots)a-c** show the distributions of the p-values extracted from models during the resampling study. For CV and WV, but not diameter, there is modest a downwards trend as sample size increases, suggesting that the probability of seeing a prognostic effect is increased as sample size increases. Results from the resampling study indicate that the effect of decreasing the p-value distribution, and thereby increasing the probability of demonstrating a prognostic effect of size, by log-transformation is greater for WV than CV across the range of sample sizes. These results show that increasing sample size for all size parameters and, in the case of WV, log transformation may increase the chances of showing a significant association with OS. 
 
@@ -321,7 +310,7 @@ Although univariable models derived from our large, well curated institutional d
 
 <br>
 
-Word count: 2,954
+Word count: 2,975
 
 <br>
 
@@ -335,17 +324,13 @@ KF is a 4ward North Clinical PhD fellow funded by Wellcome award (203914/Z/16/Z)
 
 <br>
 
-## References
-
-\pagebreak
-
 [Figure and table legends]{.underline}
 
 Figure  \@ref(fig:flowchart) - Flowchart summarising the preparation of imaging data for statistical analysis
 
 Figure \@ref(fig:gbms) - Definition of tumour volumes used in the study
 
-Figure \@ref(fig:boxplots) - Boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for tumour diameter vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legend). The dotted horizontal line represents the p-value threshold for statistical significance (0.05).
+Figure \@ref(fig:boxplots) - Three sets of boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for tumour diameter (a), whole volume (b) or core volume (c) vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legends). The dotted horizontal lines represents the p-value threshold for statistical significance (0.05).
 
 Table \@ref(tab:demotable) - Summary of patient demographics and treatment (n=279)
 
@@ -353,3 +338,8 @@ Table \@ref(tab:volmods) - Summary of univariable Cox proportional hazards model
 
 Table \@ref(tab:simresults) - Results of resampling study
 
+<br>
+
+## References
+
+\pagebreak
