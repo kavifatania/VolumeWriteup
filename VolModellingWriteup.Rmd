@@ -159,7 +159,7 @@ Demographic, clinical and cytogenetic data were obtained from the electronic hea
 
 A summary of the data preparation and number of patients excluded with reasons is shown in **Figure \@ref(fig:flowchart)**. Digital Imaging and Communications in Medicine (DICOM) image preparation was performed in python 3.9[@VanRossum2009]. DICOM images were retrieved from the institutional picture archive and communication system (PACS) and pseudonymised, and the image acquisition parameters are summarised in **Supplementary Table 1**. Images were converted to Neuroimaging Informatics Technology Initiative (NIfTI) file format using the dicom2nifti (v2.3.4) package[@Icometrix].
 
-```{r flowchart, fig.cap="Flowchart summarising the preparation of imaging data for statistical analysis", echo=FALSE,fig.topcaption=TRUE}
+```{r flowchart, fig.cap="Flowchart summarising the preparation of imaging data for statistical analysis", echo=FALSE,fig.topcaption=TRUE,include=TRUE}
 knitr::include_graphics("figures/Fig1.tiff")
 ```
 
@@ -169,14 +169,13 @@ knitr::include_graphics("figures/Fig1.tiff")
 
 *[Image pre-processing and tumour segmentation]{.underline}*
 
-Semi-automated tumour segmentations were produced using the Federated Tumor Segmentation (FeTS) software, an open-source platform with both command line interface (CLI) and graphical user interfaces (GUI), available for processing and segmentation of MRIs for patients with GBM[@Pati2022]. A detailed description of the software, including packages and libraries used in FeTS is available elsewhere[@Pati2022] and utilises the same pre-processing steps used in the Multimodal Brain Tumor Image Segmentation Benchmark (BRATS) challenge[@Menze2015], and the
-open-source software Cancer Imaging Phenomics Toolkit (CaPTk)[@Davatzikos2018]. The key 
+Semi-automated tumour segmentations were produced using the Federated Tumor Segmentation (FeTS) software, an open-source platform with both command line interface (CLI) and graphical user interfaces (GUI), available for processing and segmentation of MRIs for patients with GBM[@Pati2022]. A detailed description of the software, including packages and libraries used in FeTS is available elsewhere[@Pati2022] and utilises the same pre-processing steps used in the Multimodal Brain Tumor Image Segmentation Benchmark (BRATS) challenge[@Menze2015], and the open-source software Cancer Imaging Phenomics Toolkit (CaPTk)[@Davatzikos2018]. The key 
 features are outlined below.
 
 The T2W, T1Gd and FLAIR sequences were rigidly co-registered first to the T1W sequence, then to the SRI24 brain atlas[@Rohlfing2009] and also spatially resampled to 1 x 1 x 1mm voxel resolution using the Greedy registration framework[@Yushkevich2016]. Images were then skull-stripped[@Thakur2020] and tumour segmentation was performed with the 'nnU-net' deep-learning network and pretrained model weights[@Isensee2021]. Tumours were automatically segmented into three volumes of interest
 (VOIs). The three VOIs were defined as: i) necrotic tumour -- fluid signal intensity showing very high T2W signal and reduced T1Gd signal compared to the same area on T1W images; ii) enhancing tumour -- increased signal on T1Gd compared to the same area on T1W images and also increased T1Gd signal compared to normal white matter regions on T1Gd images; iii) peritumoural oedema -- high FLAIR and T2W signal of the entire tumour, minus the necrotic and enhancing regions and not including ventricles or extra-axial CSF spaces[@Menze2015]. Tumour masks were used to produce two tumour volumes per patient: 1) core volume (CV, cm^3^) -- combination of necrotic and enhancing components; 2) whole volume (WV, cm^3^) -- CV combined with the peritumoural oedema (see **Figure \@ref(fig:gbms)**).
 
-```{r gbms, fig.cap="Definition of tumour volumes used in the study", echo=FALSE, fig.topcaption=TRUE}
+```{r gbms, fig.cap="Definition of tumour volumes used in the study", echo=FALSE,include=TRUE, fig.topcaption=TRUE}
 knitr::include_graphics("figures/segmentation.tiff")
 ```
 
@@ -196,7 +195,7 @@ All statistical analysis was performed in `r R.version.string` and overseen by a
 
 Multivariable association of CV, WV or diameter to OS was also evaluated by (i) adjusting each size variable for either age, sex, type of surgery, MGMT promoter methylation status or adjuvant oncological treatment (ie. size variable + one clinical variable in turn) and (ii) adjusting size for all clinical parameters. As our aim was to assess the prognostic impact of tumour size, in multivariable models, this was assessed using the HR for each size parameter and the Wald test p-value for the size variable’s coefficient rather than the overall model p-value.
 
-To assess the impact that log-transformation and sample size could have on potentially detecting a prognostic effect of tumour size on OS, we conducted a resampling study. Using different sample sizes (50, 100, 150, 200, 250, 258 or 279), bootstrapped samples were generated from the original dataset with replacement. For any multivariable models that were adjusted for MGMT methylation status, the maximum sample size was 258 (not 279) due to the number of cases with a known result. Bootstrapping was carried out for 1,000,000 repetitions at each sample size and for each of the tumour size variables and a Cox regression model for each tumour size variable, both with and without log-transformation, was created. For univariable models, the percentage of models in which the overall model Wald test p-value \<0.05, \<0.01 and \<0.001 was calculated across the 1,000,000 repetitions per sample size. For multivariable models, the percentage of models in which the Wald test p-value for the coefficient of tumour size (rather than the overall model Wald test significance) \<0.05 was calculated across the 1,000,000 repetitions per sample size. Any differences in the distribution of p-values between the sample sizes and between log-transformed and non-transformed models was assessed with two-sided Kolmogorov-Smirnov tests.
+To assess the impact that log-transformation and sample size could have on potentially detecting a prognostic effect of tumour size on OS, we conducted a resampling study. Using different sample sizes (50, 100, 150, 200, 250, 258 or 279), bootstrapped samples were generated from the original dataset with replacement. For any multivariable models that were adjusted for MGMT methylation status, the maximum sample size was 258 (not 279) due to the number of cases with a known result. Bootstrapping was carried out for 1,000,000 repetitions at each sample size and for each of the tumour size variables and a Cox regression model for each tumour size variable, both with and without log-transformation, was created. For univariable models, the percentage of models in which the overall model Wald test p-value \<0.05, \<0.01 and \<0.001 was calculated across the 1,000,000 repetitions per sample size. For multivariable models, the percentage of models in which the Wald test p-value for the coefficient of tumour size (rather than the overall model Wald test significance) \<0.05 was calculated across the 1,000,000 repetitions per sample size. Effect of sample size was assessed with two-sided Kolmogorov-Smirnov tests to compare the p-value distributions from resampling at varying sample sizes.
 
 <br>
 
@@ -213,7 +212,7 @@ knitr::read_chunk('/Users/Kavi/Radiology/PhD/MachineLearning/data/MLscripts/Demo
 ```{r, ImportDemo, include=FALSE}
 ```
 
-```{r demotable, tab.cap='Summary of patient demographics and treatment (n=279)', echo=FALSE}
+```{r demotable, tab.cap='Summary of patient demographics and treatment (n=279)', echo=FALSE, include=TRUE}
 ft_demo
 ```
 
@@ -252,7 +251,7 @@ In multivariable analyses, however, there is evidence of a prognostic associatio
 ```{r, Bivariable, include=FALSE, echo=FALSE}
 ```
 
-```{r bivar, tab.cap='Table of the prognostic effect of each tumour size parameter (Whole volume, core volume and diameter) within multivariable models predicting overall survival that have been adjusted for selected clinical variables (n=279)', echo=FALSE}
+```{r bivar, tab.cap='Table of the prognostic effect of each tumour size parameter (Whole volume, core volume and diameter) within multivariable models predicting overall survival that have been adjusted for selected clinical variables (n=279)', echo=FALSE, include=TRUE}
 ft_univ
 ```
 
@@ -262,7 +261,7 @@ ft_univ
 
 *[Resampling study]{.underline}*
 
-The results of the univariable resampling study are shown in **Table \@ref(tab:simresults)**. For all size parameters, higher percentages of models with p\<0.05 were seen as the sample size increased, and for tumour volume (CV or WV), also after log transformation. 
+The results of the resampling experiments using univariable and multivariable models, the latter adjusted for operation type and also all clinical variables, are shown in **Table \@ref(tab:simresults)** and **Table \@ref(tab:multisim)**, respectively. In univariable models of tumour size, for all size variables, higher percentages of models with p\<0.05 were seen as the sample size increased, and for tumour volume (CV or WV), also after log transformation, although the change was modest. For WV, 5.14 vs 5.60% (n=50 vs n=279), for CV 5.07 vs 8.60% and for diameter 5.43 vs 6.39% models had p-values\<0.05 across all repetitions on non-transformed data. The distributions of p-values (across all repetitions per sample size at n=50 vs n=279) differed significantly on two-sided Kolmogorov-Smirnov testing (test p-values\<0.0001). **Supplementary Tables 3a-b** also show the percentages of models with p\<0.01 and p\<0.001, and this shows the same overall trend for the tumour size parameters, but with successively lower percentages of models as the p-value threshold is lowered.
 
 ```{r, SetupVolSimResults, include=FALSE, echo=FALSE}
 ```
@@ -270,23 +269,35 @@ The results of the univariable resampling study are shown in **Table \@ref(tab:s
 ```{r, TableVolSimResults, include=FALSE, echo=FALSE}
 ```
 
-```{r simresults, tab.cap='Results of resampling study', echo=FALSE}
+```{r simresults, tab.cap='Percentage of univariable tumour size models with model p-values <0.05 during the resampling study', echo=FALSE,include=TRUE}
 ft_volsim
 ```
 
+```{r, TableSimResMulti, include=FALSE, echo=FALSE}
+```
+
+```{r multisim, tab.cap='Percentage of univariable tumour size models with model p-values <0.05 during the resampling study', echo=FALSE,include=TRUE}
+ft_volsim2
+```
+
+*The percentages in the table cells represent the percentage of resamples in which Wald test p-value for the regression coefficient of the selected tumour size variable (each column) was <0.05. The left side of the table shows the results when each tumour size variable was adjusted only for type of operation (ie. Size + Operation entered into Cox model), and the right side of the table shows the results when size was adjusted for all clinical variables stated.* 
+
 <br>
 
-For WV, 5.14 vs 5.60% (n=50 vs n=279), for CV 5.07 vs 8.60% and for diameter 5.43 vs 6.39% models had p-values\<0.05 across all repetitions on non-transformed data. The distributions of p-values (across all repetitions per sample size at n=50 vs n=279) differed significantly on two-sided KS testing (all KS p-values\<0.0001). Considering log-transformation, the increase in models with p-values\<0.05 for WV versus log(WV) at n=50 (5.14 WV vs 5.20% log(WV)) was not reflected in a significantly different distribution of p-values on KS testing (KS p=0.92). However, there were significant differences observed in the distribution of p-values before and after log-transformation for CV at n=50 (5.07 vs 7.07%), and both CV (8.60 vs 8.94%) and WV (5.60 vs 9.70%) at n=279 (all KS p-values\<0.0001). For diameter, log-transformation did not lead to consistently increased percentages of models with p-values\<0.05. At n=50, 5.43 vs 5.95% (diameter vs log(diameter)) and at n=279, 6.39 vs 6.13% (diameter vs log(diameter)) models across all repetitions had p-values\<0.05.  **Supplementary Tables 3a-b** also show the percentages of models with p\<0.01 and p\<0.001, and this shows the same overall trend for the tumour size parameters, but with successively lower percentages of models as the p-value threshold is lowered.
 
-**Figure \@ref(fig:boxplots)a-c** show the distributions of the p-values extracted from models during the resampling study. For CV and WV, but not diameter, there is modest a downwards trend as sample size increases, suggesting that the probability of seeing a prognostic effect is increased as sample size increases. Results from the resampling study indicate that the effect of decreasing the p-value distribution, and thereby increasing the probability of demonstrating a prognostic effect of size, by log-transformation is greater for WV than CV across the range of sample sizes. These results show that increasing sample size for all size parameters and, in the case of WV, log transformation may increase the chances of showing a significant association with OS. 
+In the multivariable resampling experiment, increasing sample size increased the percentages models, either adjusted for operation type or all clinical variables, in which the tumour size variable's Cox regression coefficient had a Wald test p-value \<0.05. The impact of increasing sample size was much greater than compared with univariable modelling. Again, the distributions of p-values (comparing n=50 vs n=279) differed significantly on two-sided Kolmogorov-Smirnov testing (all test p-values\<0.0001). Log-transformation consistently increased the percentages of multivariable models with WV regression coefficient Wald test p-values \<0.05 (**Table \@ref(tab:multisim)**).
+
+**Figure \@ref(fig:boxplots)a-c** show the distributions of the p-values extracted from models during the univariable models in the resampling experiment. For CV and WV, but not diameter, there is modest a downwards trend as sample size increases, suggesting that the probability of seeing a prognostic effect is increased as sample size increases. **Figure \@ref(fig:multibox)a-f** shows the distribution of p-values across resamples for the regression coefficients of each tumour size variable within multivariable models, which have either been adjusted for only operation type (**Figure \@ref(fig:multibox)a,c & e**) or adjusted for all clinical variables (**Figure \@ref(fig:multibox)b,d & f**), at different sample sizes. These charts show a much greater downwards trend for all size variables, and the consistent effect of log-transformation in shifting the p-value distribution of WV downwards in multivariable modelling. Overall, results from univariable and multivariable resampling  indicate that increasing sample size for all size parameters and, in the case of WV, log transformation may increase the chances of showing a significant univariable and multivariable association with OS. 
 
 
-```{r, Boxplotfunction, include=FALSE, echo=FALSE}
+```{r boxplots,fig.cap='Three sets of boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for tumour diameter (a), whole volume (b) or core volume (c) vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legends). The dotted horizontal lines represents the p-value threshold for statistical significance (0.05).',echo=FALSE,include =TRUE, dpi=300,fig.height=15,fig.width=10,out.height=900,out.width=600,fig.topcaption=TRUE}
+knitr::include_graphics("figures/boxplots_univ.tiff")
 ```
 
-```{r boxplots,fig.cap='Three sets of boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for tumour diameter (a), whole volume (b) or core volume (c) vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legends). The dotted horizontal lines represents the p-value threshold for statistical significance (0.05).',echo=FALSE, dpi=300,fig.height=15,fig.width=10,out.height=900,out.width=600,fig.topcaption=TRUE}
-box.plots
+```{r multibox,fig.cap='Six sets of boxplots showing the distribution of p-values (y-axis) for the Wald test of the regression coefficient of tumour diameter (a&b), whole volume (c&d) or core volume (e&f) in a multivariable Cox model vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Left column of graphs (a,c&e) show results from models including the selected tumour size variable and operation type only, and right column (b,d&f) show results from multivariable model with all clinical variables and the selected tumour size variable. Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent 1.5 x the interquartile range of the distribution (outliers not shown). Models with and without log-transformation are shown side by side (see figure legend). The dotted horizontal lines represents the p-value threshold for statistical significance (0.05).',echo=FALSE,include =TRUE, dpi=300,fig.height=15,fig.width=10,out.height=900,out.width=600,fig.topcaption=TRUE}
+knitr::include_graphics("figures/box_op_multi.tiff")
 ```
+
 
 <br>
 
