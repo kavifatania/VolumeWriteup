@@ -65,7 +65,7 @@ ORCID: https://orcid.org/0000-0003-2421-1083
 
 [Purpose]{.underline}
 
-Various candidate glioblastoma (GBM) prognostic models have shown inconsistent effects of tumour size. Rather than build a prognostic model, the purpose of this study was to investigate the prognostic effect of tumour size in a large, well-curated cohort of patients diagnosed with GBM and interrogate how choice of sample size and consideration of non-linear transformations may impact on the likelihood of finding a univariable and multivariable prognostic effects using data resampling.
+Tumour size is inconsistently associated with survival in patients with glioblastoma. Rather than build the best prognostic model, the purpose of this study was to investigate the prognostic effect of tumour size in a large, well-curated cohort of patients diagnosed with GBM and interrogate how choice of sample size and consideration of non-linear transformations may impact on the likelihood of finding a univariable and multivariable prognostic effects using data resampling.
 
 [Methods]{.underline}
 
@@ -79,7 +79,7 @@ Multivariable models adjusted for operation type using any size variable were si
 
 In this large, well-curated cohort, multivariable modelling and resampling suggests tumour volume is prognostic at larger sample sizes and with log-transformation for WV.
 
-Abstract word count: 250 (max 250)
+Abstract word count: 249 (max 250)
 
 [Key points]{.underline}
 
@@ -108,15 +108,15 @@ CaPTk - Cancer Imaging Phenomics Toolkit
 
 CV - Core volume
 
+GBM - Glioblastoma
+
 FeTS - Federated Tumor Segmentation
 
-HR - Hazard ratio
+IDH - isocitrate dehydrogenase
 
 MGMT	- O6-methylguanine-DNA methyltransferase 
 
 NIfTI - Neuroimaging Informatics Technology Initiative 
-
-OS - Overall survival
 
 VOI - Volume of interest
 
@@ -132,13 +132,13 @@ Glioblastoma (GBM) is the most common primary brain malignancy in adults and pat
 There has been significant interest in investigating which prognostic factors are important for patients with GBM, in order to better stratify patients into different risk groups and due to the increasing interest in individualised treatment strategies ('personalised medicine')[@Mowforth2023]. Many such prognostic models include imaging biomarkers[@Tewarie2021]. Magnetic resonance imaging (MRI) is routinely performed for patients with GBM throughout their treatment pathway and is therefore a popular modality for exploring prognostic imaging biomarkers. The diameter of the tumour core, which is commonly defined as the enhancing and necrotic portion of the tumour[@Currie2022], is routinely evaluated in clinical practice and is amongst the most common of the imaging predictors of OS to be investigated[@Henker2017]. There are now several methods available for automated or semi-automated segmentation of the different tumour regions of GBM that are apparent on imaging[@Menze2015], such as the enhancing and necrotic tumour and peritumoural 'oedema', and it has therefore become more feasible to integrate various definitions of 'tumour volume' into prognostic models, including in larger institutional datasets[@Henker2017;@Rudie2019;@Forghani2020].
 
 
-Modelling studies have yielded inconsistent data regarding the prognostic effect of tumour diameter and volume[@Henker2017;@Peeken2018;@Lacroix2001;@Compter2021;@Senders2020]. Some of this inconsistency may be due to the sample sizes that are used to derive the prognostic models. Large cohort studies of GBM have demonstrated a weak prognostic effect of tumour diameter[@Senders2020], but smaller studies have varied, showing positive association and no relationship between diameter and prognosis[@Compter2021;@Soltani2021;@Park2017a]. Similar inconsistent findings are observed for tumour volume[@Henker2017;@Li2016;@Molinaro2020]. As well as variation in sample size, some of the inconsistency may reflect variations in handling continuous variables during statistical modelling, for example leading to dichotomisation[@Wangaryattawanich2015], assumptions of a linear relationship to outcome[@Henker2017] and use of univariable model significance to select predictors into multivariable models[@Park2017a]. All these choices are known to impact upon the modelling process and may impact on the ability to determine accurate prognostic effects of the candidate predictors[@Harrell2015;@Riley2019b].
+Modelling studies have yielded inconsistent data regarding the prognostic effect of tumour diameter and volume[@Henker2017;@Peeken2018;@Lacroix2001;@Compter2021;@Senders2020]. Some of this inconsistency may be due to the sample sizes that are used to derive the prognostic models. Large cohort studies of GBM have demonstrated a weak prognostic effect of tumour diameter[@Senders2020], but smaller studies have varied, showing positive association and no relationship between diameter and prognosis[@Compter2021;@Soltani2021;@Park2017a]. Similar inconsistent findings are observed for tumour volume[@Henker2017;@Li2016;@Molinaro2020]. As well as variation in sample size, some of the inconsistency may reflect variations in handling continuous variables during statistical modelling, for example leading to dichotomisation[@Wangaryattawanich2015], assumptions of a linear relationship to outcome[@Henker2017] and use of univariable model significance to select predictors[@Park2017a]. All these choices are known to impact upon the modelling process and may impact on the ability to determine accurate prognostic effects of the candidate predictors[@Harrell2015;@Riley2019b].
 
 
 There are a number of ways to select predictors for multivariable prognostic modelling and to evaluate the uncertainty or instability that might arise from choosing predictors in small samples or using univariable significance[@Harrell2015;@Riley2019b]. This includes the use of internal validation strategies such as data resampling (ie. bootstrapping) to estimate uncertainty in effect size and predictor selection, but this is infrequently assessed in the prognostic modelling of GBM survival despite its importance[@Tewarie2021].
 
 
-Rather than build a candidate prognostic model, the purpose of this study was to investigate the prognostic effect of tumour size in a large, well-curated cohort of patients diagnosed with GBM and interrogate how choice of sample size and consideration of non-linear transformations may impact on the likelihood of finding a univariable and multivariable prognostic effects using data resampling.
+Our hypothesis is that these inconsistencies in the literature are secondary to varying sample size, predictor seletion strategies in multivariable modelling and consideration of data transformation. Rather than build the best prognostic model, the purpose of this study was to investigate the prognostic effect of tumour size in a large, well-curated cohort of patients diagnosed with GBM and interrogate how choice of sample size and consideration of non-linear transformations may impact on the likelihood of finding a univariable and multivariable prognostic effects using data resampling.
 
 <br>
 
@@ -146,13 +146,13 @@ Rather than build a candidate prognostic model, the purpose of this study was to
 
 *[Ethical approval]{.underline}*
 
-This was a retrospective study and therefore informed patient consent was not feasible. Ethical approval and institutional data access was approved via local ethical review committee (REC ref: 19/YH/0300, IRAS project ID: 255585). This patient cohort has been described in a prior study, which focused on the imaging findingsi of developing/early GBM and did not include any detailed analysis of tumour size and its relationship to outcome[@Currie2023].
+This was a retrospective study and therefore informed patient consent was not feasible. Ethical approval and institutional data access was approved via local ethical review committee (REC ref: 19/YH/0300, IRAS project ID: 255585). This patient cohort has been described in a prior study, which focused on the imaging findings of developing/early GBM and did not include any detailed analysis of tumour size and its relationship to outcome[@Currie2023].
 
 <br>
 
 *[Patient selection and characteristics]{.underline}*
 
-All consecutive patients (16 years and over) with histologically proven GBM treated at a single tertiary referral centre between 2014-2020 were identified retrospectively from neuro-oncology multidisciplinary team (MDT) records. The catchment area includes 3.9 – 4.4 million adults, and over this period, 3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were: absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented isocitrate dehydrogenase (IDH) mutation on immunohistochemistry or cytogenetic testing. 
+All consecutive patients (16 years and over) with histologically proven GBM treated at a single tertiary referral centre between 2014-2020 were identified retrospectively from neuro-oncology multidisciplinary team records. The catchment area includes 3.9 – 4.4 million adults, and over this period, 3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were: absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented isocitrate dehydrogenase (IDH) mutation on immunohistochemistry or cytogenetic testing. 
 
 Demographic, clinical and cytogenetic data were obtained from the electronic health records using in-house software. Data included patient age, sex and type of operation. Histopathological and cytogenetic data included histology, IDH1 and 2 mutation and O6-methylguanine-DNA methyltransferase (MGMT) promoter methylation. Extent of resection was estimated by the same consultant neuroradiologist using the immediate (48-72 hour) post-resection contrast-enhanced MRI, and grouped based upon the amount of contrast enhancing and necrotic tumour resected – (i) 100%, (ii) \≥90% or (iii) \<90%. Adjuvant treatment was categorized as (i) full Stupp protocol – 60 Gy in 30 fractions radiotherapy with concomitant and 6 cycles adjuvant temozolomide; (ii) partial Stupp – 60 Gy in 30 fractions radiotherapy but temozolomide discontinued during either concomitant or adjuvant treatment phase; (iii) non-Stup – any other treatment protocol.
 
@@ -188,9 +188,9 @@ knitr::include_graphics("figures/segmentation.tiff")
 
 <br>
 
-The tissue segmentations were checked manually and corrected using the FeTS GUI. All segmentations were checked by a board-certified neuroradiology fellow (5 years radiology experience). Independently, 50 segmentations were also checked by a consultant neuroradiologist (\>10 years consultant neuroradiology experience) and the inter-rater concordance compared using the dice similarity coefficient (DSC). 
+The tissue segmentations were checked manually and corrected using FeTS. All segmentations were checked by a board-certified neuroradiology fellow (5 years radiology experience), blinded to outcome at the time of review. Independently, 50 segmentations were also checked by a consultant neuroradiologist (\>10 years consultant neuroradiology experience), also blinded to outcome, and the inter-rater concordance compared using the dice similarity coefficient. 
 
-Tumour diameter was defined as the maximum axial or cranio-caudal diameter of the enhancing tumour core and was measured using the T1Gd sequence within imaging viewing software (Impax Version 6.5.3.3009, Agfa Healthcare) using in-built callipers on a submillimetre scale (mm - converted to cm) by two radiology trainees (1 and 2 years radiology experience) and checked by a board-certified neuroradiology fellow (5 years radiology experience).
+Tumour diameter was defined as the maximum axial or cranio-caudal diameter of the enhancing tumour core and was measured using the T1Gd sequence within imaging viewing software (Impax Version 6.5.3.3009, Agfa Healthcare) using in-built callipers on a submillimetre scale (mm - converted to cm) by two radiology trainees (1 and 2 years radiology experience) and checked by a board-certified neuroradiology fellow (5 years radiology experience), blinded to outcome at the time of measurement.
 
 <br>
 
@@ -295,11 +295,11 @@ In the multivariable resampling experiment, increasing sample size increased the
 **Figure \@ref(fig:boxplots)a-c** show the distributions of the p-values extracted from models during the univariable models in the resampling experiment. For CV and WV, but not diameter, there is modest a downwards trend as sample size increases, suggesting that the probability of seeing a prognostic effect is increased as sample size increases. **Figure \@ref(fig:multibox)a-f** shows the distribution of p-values across resamples for the regression coefficients of each tumour size variable within multivariable models, which have either been adjusted for only operation type (**Figure \@ref(fig:multibox)a,c & e**) or adjusted for all clinical variables (**Figure \@ref(fig:multibox)b,d & f**), at different sample sizes. These charts show a much greater downwards trend for all size variables, and the consistent effect of log-transformation in shifting the p-value distribution of WV downwards in multivariable modelling. Overall, results from univariable and multivariable resampling  indicate that increasing sample size for all size parameters and, in the case of WV, log transformation may increase the chances of showing a significant univariable and multivariable association with OS. 
 
 
-```{r boxplots,fig.cap='Three sets of boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for tumour diameter (a), whole volume (b) or core volume (c) vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legends). The dotted horizontal lines represents the p-value threshold for statistical significance (0.05).',echo=FALSE,include =TRUE, dpi=300,fig.height=15,fig.width=10,out.height=900,out.width=600,fig.topcaption=TRUE}
+```{r boxplots,fig.cap='Three sets of boxplots showing the distribution of p-values (y-axis) extracted from each univariable model for tumour diameter (a), whole volume (b) or core volume (c) vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent the range of the distribution. Models with and without log-transformation are shown side by side (see figure legends). The dotted horizontal lines represents the p-value threshold for statistical significance (0.05). A modest downwards trend is shown for whole volume as sample size increases and a downwards shift with log-transformation, which is not seen for diameter or core volume.',echo=FALSE,include =TRUE, dpi=300,fig.height=15,fig.width=10,out.height=900,out.width=600,fig.topcaption=TRUE}
 knitr::include_graphics("figures/boxplots_univ.tiff")
 ```
 
-```{r multibox,fig.cap='Six sets of boxplots showing the distribution of p-values (y-axis) for the Wald test of the regression coefficient of tumour diameter (a&b), whole volume (c&d) or core volume (e&f) in a multivariable Cox model vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Left column of graphs (a,c&e) show results from models including the selected tumour size variable and operation type only, and right column (b,d&f) show results from multivariable model with all clinical variables and the selected tumour size variable. Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent 1.5 x the interquartile range of the distribution (outliers not shown). Models with and without log-transformation are shown side by side (see figure legend). The dotted horizontal lines represents the p-value threshold for statistical significance (0.05).',echo=FALSE,include =TRUE, dpi=300,fig.height=15,fig.width=10,out.height=900,out.width=600,fig.topcaption=TRUE}
+```{r multibox,fig.cap='Six sets of boxplots showing the distribution of p-values (y-axis) for the Wald test of the regression coefficient of tumour diameter (a&b), whole volume (c&d) or core volume (e&f) in a multivariable Cox model vs overall survival created across the 1,000,000 repetitions for each sample size (x-axis). Left column of graphs (a,c&e) show results from models including the selected tumour size variable and operation type only, and right column (b,d&f) show results from multivariable model with all clinical variables and the selected tumour size variable. Boxes outline the interquartile range of p-values from the resampling experiment, with median values indicated by the central, thick black line. Tails represent 1.5 x the interquartile range of the distribution (outliers not shown). Models with and without log-transformation are shown side by side (see figure legend). The dotted horizontal lines represents the p-value threshold for statistical significance (0.05). Sample size shows a large impact on the distribution of p-values for all size variables and log-transformation causes a sizeable downward shift in distribution for whole volume p-values.',echo=FALSE,include =TRUE, dpi=300,fig.height=15,fig.width=10,out.height=900,out.width=600,fig.topcaption=TRUE}
 knitr::include_graphics("figures/box_op_multi.tiff")
 ```
 
