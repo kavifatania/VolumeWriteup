@@ -1,6 +1,6 @@
 ---
 title: |
-  Title: Tumour size and overall survival in a cohort of patients with unifocal glioblastoma: a univariable prognostic modelling and resampling study
+  Title: Tumour size and overall survival in a cohort of patients with unifocal glioblastoma: a uni- and multivariable prognostic modelling and resampling study
 author:
   - Kavi Fatania:
       institute: [DofRL, LIMR]
@@ -65,32 +65,34 @@ ORCID: https://orcid.org/0000-0003-2421-1083
 
 [Purpose]{.underline}
 
-Various glioblastoma (GBM) prognostic models incorporating tumour volume or diameter have been proposed - often with inconsistent performance. The aim was to investigate the relationship between overall survival (OS) and tumour size using a well curated dataset of patients with GBM.
+Various candidate glioblastoma (GBM) prognostic models have shown inconsistent effects of tumour size. Rather than build a prognostic model, the purpose of this study was to investigate the prognostic effect of tumour size in a large, well-curated cohort of patients diagnosed with GBM and interrogate how choice of sample size and consideration of non-linear transformations may impact on the likelihood of finding a univariable and multivariable prognostic effects using data resampling.
 
 [Methods]{.underline}
 
-279 patients with IDH-wildtype unifocal WHO grade 4 GBM and pre-operative MRI between 2014-2020 were retrospectively included. Tumours were segmented using deep-learning with manual correction and manual diameter measurements. Association between core volume, whole volume (CV/WV) and diameter with OS was evaluated using univariable Cox proportional hazard models. Log transformation and penalised splines were used to assess non-linearity. Resampling with 1,000,000 repetitions and varying sample size was used to create Cox models and percentage of significant models was calculated.
+279 patients (mean age 61 years, 39% female) with IDH-wildtype unifocal WHO grade 4 GBM and pre-operative MRI between 2014-2020 were retrospectively included. Tumours were segmented using deep-learning with manual correction and manual diameter measurements. Univariable and multivariable association between core volume, whole volume (CV, WV) and diameter to OS was assessed with (1) Cox proportional hazard models, with and without log transformation and (2) resampling of data with 1,000,000 repetitions and varying sample size to identify percentage of models with significant effects of tumour size.
 
 [Results]{.underline}
 
-Median (interquartile range) CV 28.1cm^3^ (12.6 – 50.3), WV 103.3cm^3^ (45.6 – 160.1) and diameter 4.4cm (3.3-5.4). No association with OS was observed with univariable models of size ± log transformation or with non-linear modelling. Resampling led to higher percentages of significant models (p<0.05) when CV or WV was log transformed, and for volume and diameter using larger samples. For n=50, 5.1% of WV vs 5.2% log(WV), 5.0% CV vs 7.0% log(CV) were significant. At n=279, 5.6% WV and 9.7% log(WV), 8.6% CV vs 8.9% log(CV) had p<0.05.
+Multivariable models adjusted for operation type using any size variable were significant, and diameter adjusted for all variables remainded significant (p=0.03). Resampling increased significant effects (p\<0.05) of all size variable as sample size increased, and when WV was log-transformed, especially in the multivariable models. For models adjusted for surgery extent, 19.5% of WV vs 26.3% log-WV (n=50) and 69.9% WV and 89.9% log-WV (n=279) were significant.
 
 [Conclusion]{.underline}
 
-Although an association between tumour size and OS was not demonstrated initially in this well-curated institutional dataset, resampling suggests a univariable prognostic effect may become apparent with very large datasets and specific data (log) transformations.
+In this large, well-curated cohort, multivariable modelling and resampling suggests tumour volume is prognostic at larger sample sizes and with log-transformation for WV.
 
-Abstract word count: 247
+Abstract word count: 250 (max 250)
 
 [Key points]{.underline}
 
-* An inconsistent association between tumour size and overall survival has been reported in patients with glioblastoma
-* Log transformation and increased sample size improved the chance of detecting a prognostic relationship
-* Prognostic modelling in GBM should include data transformation and appropriate sample sizes 
+* Multivariable resampling experiments showed that increasing sample sizes raised the chance of detecting a signficant prognostic effect diameter or volume - diameter was prognostic in 19.5% models for n=50, but in 55.7% at n=279.
+
+* Multivariable resampling of whole volume (core + peritumoural oedema) showed a large impact on the chance of detecting a prognostic relationship with log-transformation - whole volume was prognostic in 24.6% models without and 45.7% of models with transformation (n=279). 
+
+* Tumour size (diameter or volume) adjusted for extent of surgery and diameter adjusted for all clinical variables showed a statistically-significant relationship to survival (HR 1.12, 95% CI 1.01-1.25, p = 0.03) that wasn't apparent in univariable models.
 
 
 [Summary statement]{.underline}
 
-**Glioblastoma size is often considered for inclusion into multivariable models based upon univariable association to overall survival, but in our cohort of GBM patients and use of resampling we find that this approach can be affected by the sample size and data transformation.**
+**Glioblastoma size is inconsistently associated with survival, but our uni-/multivariable and resampling analysis support the hypothesis that limited sample size, lack of data transformation or reliance on univariable associations may help explain some of this heterogeneity.**
 
 
 [Key words]{.underline}
@@ -133,7 +135,10 @@ There has been significant interest in investigating which prognostic factors ar
 Modelling studies have yielded inconsistent data regarding the prognostic effect of tumour diameter and volume[@Henker2017;@Peeken2018;@Lacroix2001;@Compter2021;@Senders2020]. Some of this inconsistency may be due to the sample sizes that are used to derive the prognostic models. Large cohort studies of GBM have demonstrated a weak prognostic effect of tumour diameter[@Senders2020], but smaller studies have varied, showing positive association and no relationship between diameter and prognosis[@Compter2021;@Soltani2021;@Park2017a]. Similar inconsistent findings are observed for tumour volume[@Henker2017;@Li2016;@Molinaro2020]. As well as variation in sample size, some of the inconsistency may reflect variations in handling continuous variables during statistical modelling, for example leading to dichotomisation[@Wangaryattawanich2015], assumptions of a linear relationship to outcome[@Henker2017] and use of univariable model significance to select predictors into multivariable models[@Park2017a]. All these choices are known to impact upon the modelling process and may impact on the ability to determine accurate prognostic effects of the candidate predictors[@Harrell2015;@Riley2019b].
 
 
-The aim of this study was to investigate the prognostic effect of tumour volume and diameter in a large, well curated institutional cohort of patients diagnosed with GBM. Specifically, we sought to interrogate how choice of sample size and consideration of non-linear transformations may impact on the likelihood of finding a prognostic effect using a resampling study.
+There are a number of ways to select predictors for multivariable prognostic modelling and to evaluate the uncertainty or instability that might arise from choosing predictors in small samples or using univariable significance[@Harrell2015;@Riley2019b]. This includes the use of internal validation strategies such as data resampling (ie. bootstrapping) to estimate uncertainty in effect size and predictor selection, but this is infrequently assessed in the prognostic modelling of GBM survival despite its importance[@Tewarie2021].
+
+
+Rather than build a candidate prognostic model, the purpose of this study was to investigate the prognostic effect of tumour size in a large, well-curated cohort of patients diagnosed with GBM and interrogate how choice of sample size and consideration of non-linear transformations may impact on the likelihood of finding a univariable and multivariable prognostic effects using data resampling.
 
 <br>
 
@@ -147,7 +152,7 @@ This was a retrospective study and therefore informed patient consent was not fe
 
 *[Patient selection and characteristics]{.underline}*
 
-All consecutive patients (16 years and over) with histologically proven GBM treated at a single tertiary referral centre between 2014-2020 were identified retrospectively from neuro-oncology multidisciplinary team (MDT) records. The catchment area includes 3.9 – 4.4 million adults, and over this period, 3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were: absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented IDH mutation on immunohistochemistry or cytogenetic testing. 
+All consecutive patients (16 years and over) with histologically proven GBM treated at a single tertiary referral centre between 2014-2020 were identified retrospectively from neuro-oncology multidisciplinary team (MDT) records. The catchment area includes 3.9 – 4.4 million adults, and over this period, 3046 new primary brain neoplasms were discussed, with approximately 20% diagnosed with GBM or malignant glioma. Inclusion criteria were: MRI performed prior to any surgery, unifocal tumour (as determined by consultant neuroradiologist with \>10 years experience), and all four of the following MRI sequences acquired: T1-weighted (T1W), T2-weighted (T2W), fluid attenuated inversion recovery (FLAIR) and gadolinium-enhanced T1W (T1Gd) sequence. Exclusion criteria were: absence of pre-operative MRI, significant degradation of imaging due to artefact, or tumours were multifocal at presentation, documented isocitrate dehydrogenase (IDH) mutation on immunohistochemistry or cytogenetic testing. 
 
 Demographic, clinical and cytogenetic data were obtained from the electronic health records using in-house software. Data included patient age, sex and type of operation. Histopathological and cytogenetic data included histology, IDH1 and 2 mutation and O6-methylguanine-DNA methyltransferase (MGMT) promoter methylation. Extent of resection was estimated by the same consultant neuroradiologist using the immediate (48-72 hour) post-resection contrast-enhanced MRI, and grouped based upon the amount of contrast enhancing and necrotic tumour resected – (i) 100%, (ii) \≥90% or (iii) \<90%. Adjuvant treatment was categorized as (i) full Stupp protocol – 60 Gy in 30 fractions radiotherapy with concomitant and 6 cycles adjuvant temozolomide; (ii) partial Stupp – 60 Gy in 30 fractions radiotherapy but temozolomide discontinued during either concomitant or adjuvant treatment phase; (iii) non-Stup – any other treatment protocol.
 
@@ -169,7 +174,7 @@ knitr::include_graphics("figures/Fig1.tiff")
 
 *[Image pre-processing and tumour segmentation]{.underline}*
 
-Semi-automated tumour segmentations were produced using the Federated Tumor Segmentation (FeTS) software, an open-source platform with both command line interface (CLI) and graphical user interfaces (GUI), available for processing and segmentation of MRIs for patients with GBM[@Pati2022]. A detailed description of the software, including packages and libraries used in FeTS is available elsewhere[@Pati2022] and utilises the same pre-processing steps used in the Multimodal Brain Tumor Image Segmentation Benchmark (BRATS) challenge[@Menze2015], and the open-source software Cancer Imaging Phenomics Toolkit (CaPTk)[@Davatzikos2018]. The key 
+Semi-automated tumour segmentations were produced using the Federated Tumor Segmentation (FeTS) software, an open-source platform with both command line interface and graphical user interfaces, available for processing and segmentation of MRIs for patients with GBM[@Pati2022]. A detailed description of the software, including packages and libraries used in FeTS is available elsewhere[@Pati2022] and utilises the same pre-processing steps used in the Multimodal Brain Tumor Image Segmentation Benchmark (BRATS) challenge[@Menze2015], and the open-source software Cancer Imaging Phenomics Toolkit (CaPTk)[@Davatzikos2018]. The key 
 features are outlined below.
 
 The T2W, T1Gd and FLAIR sequences were rigidly co-registered first to the T1W sequence, then to the SRI24 brain atlas[@Rohlfing2009] and also spatially resampled to 1 x 1 x 1mm voxel resolution using the Greedy registration framework[@Yushkevich2016]. Images were then skull-stripped[@Thakur2020] and tumour segmentation was performed with the 'nnU-net' deep-learning network and pretrained model weights[@Isensee2021]. Tumours were automatically segmented into three volumes of interest
@@ -261,7 +266,7 @@ ft_univ
 
 *[Resampling study]{.underline}*
 
-The results of the resampling experiments using univariable and multivariable models, the latter adjusted for operation type and also all clinical variables, are shown in **Table \@ref(tab:simresults)** and **Table \@ref(tab:multisim)**, respectively. In univariable models of tumour size, for all size variables, higher percentages of models with p\<0.05 were seen as the sample size increased, and for tumour volume (CV or WV), also after log transformation, although the change was modest. For WV, 5.14 vs 5.60% (n=50 vs n=279), for CV 5.07 vs 8.60% and for diameter 5.43 vs 6.39% models had p-values\<0.05 across all repetitions on non-transformed data. The distributions of p-values (across all repetitions per sample size at n=50 vs n=279) differed significantly on two-sided Kolmogorov-Smirnov testing (test p-values\<0.0001). **Supplementary Tables 3a-b** also show the percentages of models with p\<0.01 and p\<0.001, and this shows the same overall trend for the tumour size parameters, but with successively lower percentages of models as the p-value threshold is lowered.
+The results of the resampling experiments using univariable and multivariable models, the latter adjusted for operation type and also all clinical variables, are shown in **Supplementary Table 3a** and **Table \@ref(tab:multisim)**, respectively. In univariable models of tumour size, for all size variables, higher percentages of models with p\<0.05 were seen as the sample size increased, and for tumour volume (CV or WV), also after log transformation, although the change was modest. For WV, 5.14 vs 5.60% (n=50 vs n=279), for CV 5.07 vs 8.60% and for diameter 5.43 vs 6.39% models had p-values\<0.05 across all repetitions on non-transformed data. The distributions of p-values (across all repetitions per sample size at n=50 vs n=279) differed significantly on two-sided Kolmogorov-Smirnov testing (test p-values\<0.0001). **Supplementary Tables 3b-c** also show the percentages of models with p\<0.01 and p\<0.001, and this shows the same overall trend for the tumour size parameters, but with successively lower percentages of models as the p-value threshold is lowered.
 
 ```{r, SetupVolSimResults, include=FALSE, echo=FALSE}
 ```
@@ -269,9 +274,9 @@ The results of the resampling experiments using univariable and multivariable mo
 ```{r, TableVolSimResults, include=FALSE, echo=FALSE}
 ```
 
-```{r simresults, tab.cap='Percentage of univariable tumour size models with model p-values <0.05 during the resampling study', echo=FALSE,include=TRUE}
-ft_volsim
-```
+# ```{r simresults, tab.cap='Percentage of univariable tumour size models with model p-values <0.05 during the resampling study', echo=FALSE,include=TRUE}
+# ft_volsim
+# ```
 
 ```{r, TableSimResMulti, include=FALSE, echo=FALSE}
 ```
@@ -315,11 +320,7 @@ Bootstrapping (resampling with replacement) as a method for exploring model unce
 
 There are several limitations of our study. The MRI acquisition parameters were heterogenous, in particular the slice thickness, and this could have impacted upon the accuracy of volume measurements. However, the spatial resampling of images to an isotropic 1mm^3^ voxel resolution should have reduced the impact of acquisition heterogeneity. Furthermore, the dataset represents a retrospective real-world clinical dataset, which in our institution's routine practice is likley to include different imaging acquisitions due to patients being referred from other centres, with their own (varying) MRI protocols. A proportion of our patients had to be excluded due to lack of the necessary MRI sequences for the deep-learning segmentation algorithm. The efficiency of a semi-automated segmentation approach outweighed the potential limitation of a reduced sample size. We investigated only three size variables but there are many others described in the literature. Whilst this could be deemed a limitation of our approach, we did not aim to provide a comprehensive study of the prognostic role of all possible tumour size parameters in GBM, but to investigate some of the methodological issues affecting this question, and that could be applied to any of the other continuous measures of tumour size in GBM. 
 
-<br>
-
-**[Conclusion]{.underline}**
-
-Although univariable models derived from our large, well curated institutional dataset of patients with GBM showed limited evidence to support a linear or non-linear prognostic association between size and patient outcome, the resampling study suggests that there might be a prognostic effect, but that it is only likely to be demonstrated using very large datasets and, in the case of WV, after log-transformation.
+In summary, univariable models derived from our large, well curated institutional dataset of patients with GBM showed limited evidence to support a linear or non-linear prognostic association between size and patient outcome, however the multivariable models did support a prognostic role for tumour size. Diameter showed a significant multivariable association with survival, whereas CV and log(WV) showed significant effects when adjusted for operation type and potential for an effect in the full clinical model. Importantly, the resampling experiments demonstrate the impact that increasing sample size and for WV, log-transformation, has in increasing the ability to detect prognostic relationships in univariable and multivariable models.
 
 <br>
 
